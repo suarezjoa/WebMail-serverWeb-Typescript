@@ -3,20 +3,46 @@ html
     title WebMail
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css')
 
+html
+  head
+    title WebMail
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css')
+
   body
-    .container
-      .columns
-        .column.is-2
-          aside.menu
-            .menu-list
-              a.menu-item.is-active(href='/') Inbox
-              a.menu-item(href='/BandejaDeEntrada') Bandeja de entrada
-block content
-  .container
-    h1.title Bandeja de entrada
-    ol.inbox-list
-      each message in CorreoReci
-        li.inbox-item
-          h3.inbox-item__from= message.from
-          h4.inbox-item__subject= message.subject
-          p.inbox-item__body= message.body
+    .columns.is-flex-fullheight
+      .column.is-2-desktop
+        aside.menu
+          .menu-list
+            a.menu-item.is-active.has-text-centered(href='/') Inicio
+      .column.is-desktop
+        .column
+          h1 Aca iria un buscar correo
+        .column
+          .buttons-container
+            .columns.is-multiline
+              .column.is-3
+                a.button.is-primary.is-fullwidth-active(href='/BandejaDeEntrada') Bandeja de entrada
+              .column.is-3
+                button.button.is-info Filtros
+              .column.is-3
+                button.button.is-warning Nuevo
+              .column.is-3
+                button.button.is-danger Eliminar
+              .column.is-3
+                button.button.is-primary Agregar
+              .column.is-3
+                button.button.is-info Exportar
+              .column.is-3
+                button.button.is-warning Importar
+              .column.is-3
+                button.button.is-danger Configurar
+        .column
+          block content
+            .container
+            ol.inbox-list
+                  h1= correo.getAsunto()
+                  p= correo.getContenido()
+                  p= correo.imprimirEmisor()
+  
+    
+      

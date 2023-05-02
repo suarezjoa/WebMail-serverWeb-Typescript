@@ -1,4 +1,10 @@
 import express  from "express"; // esModules
+import { Correo } from '../back/Correo';
+import { Usuario } from '../back/Usuario';
+import BandejaDeEnvios from "../back/BandejaDeEnvios";
+
+const correo = new Correo('Asunto del correo', 'Contenido del correo', new Usuario('Juan', 'Pérez', 'juanperez@example.com',new BandejaDeEnvios));
+
 
 const router = express.Router();
 
@@ -24,7 +30,7 @@ const CorreoReci = [
   ];
 
 router.get('/', (req: express.Request, res: express.Response) =>{
-    res.render('BandejaDeEntradaPug', { CorreoReci });
+    res.render('BandejaDeEntradaPug', { correo });
 })
 
 router.post('/', (req, res) =>{})
