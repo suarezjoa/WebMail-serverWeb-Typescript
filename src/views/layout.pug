@@ -1,0 +1,22 @@
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title= title
+    link(rel="stylesheet", href="/css/bulma.min.css")
+  body
+    section.section
+      div.container
+        h1.title= title
+        p.subtitle= message
+
+    block content
+        block content
+          .container
+             h1.title Bandeja de entrada
+              ol.inbox-list
+                each message in CorreoReci
+        li.inbox-item
+          h3.inbox-item__from= message.from
+          h4.inbox-item__subject= message.subject
+          p.inbox-item__body= message.body

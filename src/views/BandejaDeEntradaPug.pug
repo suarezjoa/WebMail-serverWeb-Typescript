@@ -1,0 +1,22 @@
+html
+  head
+    title WebMail
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css')
+
+  body
+    .container
+      .columns
+        .column.is-2
+          aside.menu
+            .menu-list
+              a.menu-item.is-active(href='/') Inbox
+              a.menu-item(href='/BandejaDeEntrada') Bandeja de entrada
+block content
+  .container
+    h1.title Bandeja de entrada
+    ol.inbox-list
+      each message in CorreoReci
+        li.inbox-item
+          h3.inbox-item__from= message.from
+          h4.inbox-item__subject= message.subject
+          p.inbox-item__body= message.body
