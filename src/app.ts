@@ -1,11 +1,9 @@
 import express from 'express';
 import path from 'path';
-import BandejaDeEntrada from './routes/BandejaDeEntrada';
+import RoutesBandejaDeEntrada from './routes/RoutesBandejaDeEntrada';
 
 const app = express();
 const PORT = 3000;
-
-
 
 // Set views directory
 app.set('views', path.join(__dirname, 'views'));
@@ -17,10 +15,11 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Define routes
-app.get('/', (req, res) => {
+app.get('/', (_req: express.Request, res: express.Response) => {
   res.render('index', { });
+  app.use('/RoutesBandejaDeEntrada', RoutesBandejaDeEntrada);
 });
-app.use('/BandejaDeEntrada', BandejaDeEntrada);
+
 
 // Start server
 app.listen(PORT, () => {
