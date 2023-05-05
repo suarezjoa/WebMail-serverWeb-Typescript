@@ -12,6 +12,10 @@ export default class BandejaDeEnvios implements IAccionesBandeja, IFiltros {
     return of(correosFiltrados);
   }
 
+  public getCorreosEnviados(): Correo[] {
+    return this.correosEnviados;
+  }
+
   public agregarABandeja(correoEnviado: Correo): void {
     this.correosEnviados.push(correoEnviado);
   }
