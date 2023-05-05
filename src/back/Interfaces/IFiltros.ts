@@ -9,6 +9,6 @@ export interface IFiltros {
 
   filtroPorContenido(contenido: string): Observable <Correo[]>;
 
-  filtroPorEmisor(emisor: Usuario): Observable <Correo[]>;
+  filtroPorEmisor(emisor: string): Observable <Correo[]>;
 
 }

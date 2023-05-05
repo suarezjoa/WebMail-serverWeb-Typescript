@@ -1,7 +1,7 @@
 import express  from "express"; // esModules
 import { Correo } from '../back/Correo';
 import { Usuario } from '../back/Usuario';
-import BandejaDeEnvios from "../back/BandejaDeEnvios";
+import BandejaDeEnvios from "../back/bandejas/BandejaDeEnvios";
 
 const correo = new Correo('Asunto del correo', 'Contenido del correo', new Usuario('Juan', 'Pérez', 'juanperez@example.com',new BandejaDeEnvios));
 

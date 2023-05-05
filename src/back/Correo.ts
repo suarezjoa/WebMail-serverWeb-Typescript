@@ -2,10 +2,11 @@ import { CorreoBase } from './CorreoBase';
 import { Usuario } from './Usuario';
 
 export class Correo extends CorreoBase {
-    private para: Set<Usuario> = new Set();
+    private para: Set<Usuario>;
 
-    constructor(asunto: string, contenido: string, remitente: Usuario) {
+    constructor(asunto: string, contenido: string, remitente: string) {
         super(asunto, contenido, remitente);
+        this.para = new Set<Usuario>();
     }
 
     public agregarPara(destinatario: Usuario): void {
@@ -19,4 +20,8 @@ export class Correo extends CorreoBase {
     public getPara(): Set<Usuario> {
         return this.para;
     }
+    public setPara(contactoAEnviar: Usuario): void {
+        this.para.add(contactoAEnviar);
+    }
+
 }

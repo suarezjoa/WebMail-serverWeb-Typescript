@@ -1,25 +1,28 @@
+/*
+
 import { IBusquedas } from "./Interfaces/Ibusquedas";
 import { Usuario } from "./Usuario";
 
 export class GestorContactos implements IBusquedas {
-  private contactos: Map<string, Usuario> = new Map<string, Usuario>();
+  private contactos: Array<string>;
   private propietario: Usuario;
 
   constructor(propietario: Usuario) {
     this.propietario = propietario;
+    this.contactos =  new Array<string>();
   }
 
   public getPropietario(): Usuario {
     return this.propietario;
   }
 
-  public agregar(usuario: Usuario): void {
-    this.contactos.set(usuario.getEmail(), usuario);
+  public agregar(gmailDelNuevoContacto: string): void {
+    this.contactos.push(gmailDelNuevoContacto);
   }
 
   public eliminar(correo: string): void {
-    this.contactos.delete(correo);
-  }
+    this.contactos.splice(this.contactos.indexOf(correo),1);
+}
 
   public imprimir(): string {
     let imprimir: string = "";
@@ -29,8 +32,9 @@ export class GestorContactos implements IBusquedas {
     return imprimir;
   }
 
-  public obtenerUsuario(email: string): Usuario {
-    return this.contactos.get(email);
+  public obtenerUsuario(email: string): string {
+
+      return this.contactos.get(email);
   }
 
   public datosDeUsuario(email: string): string {
@@ -41,4 +45,4 @@ export class GestorContactos implements IBusquedas {
   public getContactos(): Map<string, Usuario> {
     return this.contactos;
   }
-}
+}*/

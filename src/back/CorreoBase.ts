@@ -3,9 +3,9 @@ import { Usuario } from './Usuario';
 export abstract class CorreoBase {
     private asunto: string;
     private contenido: string;
-    private emisor: Usuario;
+    private emisor: string;
 
-    constructor(asunto: string, contenido: string, emisor: Usuario) {
+    constructor(asunto: string, contenido: string, emisor: string) {
         this.asunto = asunto;
         this.contenido = contenido;
         this.emisor = emisor;
@@ -27,15 +27,11 @@ export abstract class CorreoBase {
         this.contenido = contenido;
     }
 
-    public getEmisor(): Usuario {
+    public getEmisor(): string {
         return this.emisor;
     }
 
-    public setEmisor(emisor: Usuario): void {
+    public setEmisor(emisor: string): void {
         this.emisor = emisor;
-    }
-
-    public imprimirEmisor(): string {
-        return `${this.emisor.getApellido()} ${this.emisor.getNombre()} ${this.emisor.getEmail()}`;
     }
 }

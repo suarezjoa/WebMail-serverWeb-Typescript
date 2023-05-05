@@ -1,18 +1,18 @@
 import { IAccionesBandeja } from './Interfaces/IAccionesBandeja';
 import { Correo } from './Correo';
 import { Filtro } from './Filtro';
+import { ContenedorDeCorreos } from './bandejas/ContenedorDeCorreos';
 
 export class Usuario {
     protected nombre: string;
     protected apellido: string;
     protected Email: string;
-    private bandeja: IAccionesBandeja;
+    private bandeja: ContenedorDeCorreos = new ContenedorDeCorreos();
 
-    constructor(nombre: string, apellido: string, Email: string, bandeja: IAccionesBandeja) {
+    constructor(nombre: string, apellido: string, Email: string) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.Email = Email;
-        this.bandeja = bandeja;
     }
 
     public getNombre(): string {
@@ -44,15 +44,16 @@ export class Usuario {
     }
 
     public enviarCorreo(correoEnviado: Correo): void {
-        const iterador = correoEnviado.getPara()[Symbol.iterator]();
-
-        for (const usuario of iterador) {
-            usuario.bandeja.agregarABandeja(correoEnviado);
+        const usuariosDestinatarios = correoEnviado.getPara();
+    
+        for (const usuario of usuariosDestinatarios) {
+            if (usuario instanceof Usuario) {
+                usuario.bandeja.CorreoEnviado(correoEnviado);
+            }
         }
-
-        this.bandeja.agregarABandeja(correoEnviado);
+        
+        this.bandeja.CorreoEnviado(correoEnviado);
     }
-
     public mostrarCorreos(): string {
         return this.bandeja.mostrarCorreos();
     }
