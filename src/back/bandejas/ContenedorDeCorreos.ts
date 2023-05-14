@@ -1,47 +1,72 @@
 
-import  { Correo } from "../Correo";
+import  { Correo } from "../Correo/Correo";
 import {  IFiltros } from '../Interfaces/IFiltros';
-import {IAccionesBandeja} from "../Interfaces/IAccionesBandeja"
+import { IStrategyBandejas } from "../Interfaces/IStrategyBandejas"
 import { Observable, of } from 'rxjs';
-/*import BandejaDeEnvios from './BandejaDeEnvios';
-import  BandejaDeRecibidos  from "./BandejaDeRecibidos";*/
+import { IObserver } from '../Interfaces/IObserver';
 
+export class ContenedorDeCorreos implements IStrategyBandejas, IFiltros {
 
-export class ContenedorDeCorreos implements IAccionesBandeja, IFiltros {
-
-    private todosLosCorreos: Correo[] = [];
-    private bandejaDeEnvios: Correo[] = [];
-    private bandejaDeEntrada: Correo[] = []; 
+    public todosLosCorreos: Correo[] = [];
+    public bandejaDeEnvios: Correo[] = [];
+    public bandejaDeEntrada: Correo[] = []; 
+    private ObservadorCuenta: IObserver | null = null;
+    private Estadonotificacion: string = "asd";
 
     constructor() {
-      
+    }
+
+    public agregarObservador(observer: IObserver): void {
+
+      this.ObservadorCuenta = observer;
+
     }
     
+    public getEstadonotificacion(): string {
+      
+      return this.Estadonotificacion;
+
+    }
+    public setEstadonotificacion(nuevoEstado: string): void {
+
+      this.Estadonotificacion = nuevoEstado;
+      this.notificarObsrvadores();
+
+    }
+    public notificarObsrvadores(): void | null {
+
+      if(this.ObservadorCuenta == null){
+        return null;
+      }else{
+        this.ObservadorCuenta.update(``);
+      }
+
+    }
 
     public agregarABandeja (correo: Correo ) : void {
 
       this.todosLosCorreos.push(correo);
 
     }
-
+    
     public CorreoEnviado (correo: Correo ) : void{
 
       this.agregarABandeja(correo);
       this.bandejaDeEnvios.push(correo);
-
+      
     }
-    public CorreoRecibido (correo: Correo ) : void{
+    public CorreoRecibido (correo: Correo ) : void {
 
       this.agregarABandeja(correo);
       this.bandejaDeEntrada.push(correo);
+      this.setEstadonotificacion(correo.getEmisor());
 
     }
 
     public getTodosLosCorreos () : Correo[] {
-
       return this.todosLosCorreos ;
-
     }
+
     public mostrarCorreos(): string {
       let imprimir: string = "";
       for (const c of this.todosLosCorreos) {
@@ -49,6 +74,22 @@ export class ContenedorDeCorreos implements IAccionesBandeja, IFiltros {
       }
       return imprimir;
     }
+    public mostrarCorreosEnviados(): string {
+      let imprimir: string = "";
+      for (const c of this.bandejaDeEnvios) {
+        const destinatarios = Array.from(c.getPara()).join("-");
+        imprimir += `A-${c.getAsunto()} C-${c.getContenido()} E-${destinatarios}`;
+      }
+      return imprimir;
+    }
+    public mostrarCorreosRecividos(): string {
+      let imprimir: string = "";
+      for (const c of this.bandejaDeEntrada) {
+        imprimir += `A-${c.getAsunto()} C-${c.getContenido()} E-${c.getEmisor()}`;
+      }
+      return imprimir;
+    }
+    
     public mostrarCorreosfiltrados(filtro: { getPredicado(): (correo: Correo) => boolean }): string {
       const correosListaFiltrada = this.todosLosCorreos.filter(filtro.getPredicado());
       return this.mostrarCorreosAUX(correosListaFiltrada);

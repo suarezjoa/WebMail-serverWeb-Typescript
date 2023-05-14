@@ -1,48 +1,47 @@
-/*
 
 import { IBusquedas } from "./Interfaces/Ibusquedas";
 import { Usuario } from "./Usuario";
+import { Contacto } from "./Contacto";
 
 export class GestorContactos implements IBusquedas {
-  private contactos: Array<string>;
+  private ListaContactos: Map<string, Contacto>;
   private propietario: Usuario;
 
   constructor(propietario: Usuario) {
     this.propietario = propietario;
-    this.contactos =  new Array<string>();
+    this.ListaContactos =  new Map<string, Contacto>();
   }
 
   public getPropietario(): Usuario {
     return this.propietario;
   }
 
-  public agregar(gmailDelNuevoContacto: string): void {
-    this.contactos.push(gmailDelNuevoContacto);
-  }
-
-  public eliminar(correo: string): void {
-    this.contactos.splice(this.contactos.indexOf(correo),1);
+  public agregarContacto(nombre: string, apellido: string,email: string,relacion: string): void {
+    var crearContacto = new Contacto(nombre,apellido,email,relacion);
+    this.ListaContactos.set(email,crearContacto);
 }
 
-  public imprimir(): string {
-    let imprimir: string = "";
-    for (const u of this.contactos.values()) {
-      imprimir += u.imprimir();
+  public EliminarContacto(email: string){
+    this.ListaContactos.delete(email);
+  }
+  
+  public obtenerContacto(email: string): Contacto | undefined {
+    if (!this.ListaContactos.get(email))
+    {
+      return undefined;
     }
-    return imprimir;
+      return this.ListaContactos.get(email);
   }
 
-  public obtenerUsuario(email: string): string {
-
-      return this.contactos.get(email);
+  public datosDeContacto(email: string): string | undefined{
+    const contactoSelec = this.obtenerContacto(email);
+    if (!contactoSelec){
+      return undefined;
+    }
+    return `${contactoSelec.getApellido()},${contactoSelec.getNombre()},${contactoSelec.getEmail()},${contactoSelec.getRelacion()}`;
   }
 
-  public datosDeUsuario(email: string): string {
-    const usuario: Usuario = this.obtenerUsuario(email);
-    return `${usuario.getApellido()},${usuario.getNombre()},${usuario.getEmail()}`;
+  public getContactos(): Map<string, Contacto> {
+    return this.ListaContactos;
   }
-
-  public getContactos(): Map<string, Usuario> {
-    return this.contactos;
-  }
-}*/
+}

@@ -1,27 +1,61 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import path from 'path';
-import RoutesBandejaDeEntrada from './routes/RoutesBandejaDeEntrada';
+import inbox from './routes/inbox';
+import login from './routes/login';
+import send from './routes/send';
+import { correosRecibidos, guardarCorreo } from './routes/correosRecibidos';
 
 const app = express();
+
 const PORT = 3000;
 
-// Set views directory
+// Configuración de Express
 app.set('views', path.join(__dirname, 'views'));
-
-// Set view engine to Pug
 app.set('view engine', 'pug');
-
-// Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
 
-// Define routes
-app.get('/', (_req: express.Request, res: express.Response) => {
-  res.render('index', { });
-  app.use('/RoutesBandejaDeEntrada', RoutesBandejaDeEntrada);
+// Configuración de las rutas
+app.use("/", login);
+app.use('/inbox', inbox);
+app.use('/send', send);
+
+// Ruta para enviar correo
+app.post('/enviar-correo', (req: Request, res: Response) => {
+  const { destinatario, asunto, mensaje } = req.body;
+
+  const correo = {
+    destinatario,
+    asunto,
+    mensaje
+  };
+
+  guardarCorreo(correo); // Guardar el correo en el inbox
+
+  res.redirect('/inbox'); // Redirigir a la página del inbox
 });
 
-
-// Start server
+// Configuración del servidor
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });
+
+
+/*app.get('/', (req: Request, res: Response) => {
+  res.render('login');
+});
+
+
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
+app.post('/login', (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
+  if (email === 'admin@gmail.com' && password === 'admin') {
+    res.render('inbox');
+  } else {
+    res.render('login', { error: 'Los datos ingresados no son correctos' });
+  }
+});*/

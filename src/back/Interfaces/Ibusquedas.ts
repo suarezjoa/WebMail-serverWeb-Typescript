@@ -1,7 +1,7 @@
 import { Usuario } from "../Usuario";
-
+import { Contacto } from "../Contacto";
 
 export interface IBusquedas {
-    obtenerUsuario(email: string): Usuario;
-    datosDeUsuario(email: string): string;
+    obtenerContacto(email: string): Contacto | undefined ;
+    datosDeContacto(email: string): string | undefined ;
   }

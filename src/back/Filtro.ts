@@ -1,4 +1,4 @@
-import { Correo } from "./Correo";
+import { Correo } from "./Correo/Correo";
 
 export class Filtro {
   private nombreFiltro: string;
@@ -32,7 +32,7 @@ export class Filtro {
   }
 
   generarFiltroPorEmisor(emisor: string): (correo: Correo) => boolean {
-    const filtroPorEmisor = (correo: Correo) => correo.getEmisor().getEmail() === emisor;
+    const filtroPorEmisor = (correo: Correo) => correo.getEmisor() === emisor;
     this.setPredicado(filtroPorEmisor);
     return filtroPorEmisor;
   }

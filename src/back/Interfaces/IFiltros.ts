@@ -1,6 +1,6 @@
 import { Observable  } from 'rxjs';
 
-import { Correo } from '../Correo';
+import { Correo } from '../Correo/Correo';
 import { Usuario } from '../Usuario';
 
 export interface IFiltros {

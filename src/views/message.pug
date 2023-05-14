@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Correo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-sQ1lgxo6aEtw0q/GE6U86y6U5UP6ScNfz9ziFF+aOncrZrDw0YhO43GYeOyShmCTyPbMXCmBdQ9AYfyh+fdHdA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">ANASHE MAIL MANAGER</a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <span class="mx-3 text-secondary dropdown">
+            <i class="fas fa-user align-middle dropdown-toggle" data-bs-toggle="dropdown"></i>
+            <span class="ms-2">Andrés Briend</span>
+            <div class="dropdown-menu small-menu">
+              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/changeuser';">Configuración</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/contacts';">Contactos</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/login';">Cerrar sesión</button>
+            </div>
+          </span>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-5">
+      <hr>
+      <hr>
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Correo</h2>
+          <hr>
+          <div class="card-text">
+            <p><strong>Remitente:</strong> juancitoperez@hotmail.com </p>
+            <p><strong>Asunto:</strong> Pagame amigo</p>
+            <p><strong>Fecha:</strong> 2023-05-04</p>
+            <p><strong>Contenido:</strong>Te queria contar que el domingo en el monumental river es la gloria papa y nadie lo gana, saludos, besos, y recorda pagarme</p>
+          </div>
+            <div class="card-footer d-flex justify-content-center">
+                <div class="text-center">
+                    <button class="btn btn-primary" onclick="window.location.href='/inbox';">Volver</button>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+</body>
+</html>
