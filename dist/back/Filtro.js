@@ -24,7 +24,7 @@ class Filtro {
         return filtroPorContenido;
     }
     generarFiltroPorEmisor(emisor) {
-        const filtroPorEmisor = (correo) => correo.getEmisor().getEmail() === emisor;
+        const filtroPorEmisor = (correo) => correo.getEmisor() === emisor;
         this.setPredicado(filtroPorEmisor);
         return filtroPorEmisor;
     }

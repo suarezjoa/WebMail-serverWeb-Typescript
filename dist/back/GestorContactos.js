@@ -1,36 +1,37 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GestorContactos = void 0;
+const Contacto_1 = require("./Contacto");
 class GestorContactos {
     constructor(propietario) {
-        this.contactos = new Map();
         this.propietario = propietario;
+        this.ListaContactos = new Map();
     }
     getPropietario() {
         return this.propietario;
     }
-    agregar(usuario) {
-        this.contactos.set(usuario.getEmail(), usuario);
+    agregarContacto(nombre, apellido, email, relacion) {
+        var crearContacto = new Contacto_1.Contacto(nombre, apellido, email, relacion);
+        this.ListaContactos.set(email, crearContacto);
     }
-    eliminar(correo) {
-        this.contactos.delete(correo);
+    EliminarContacto(email) {
+        this.ListaContactos.delete(email);
     }
-    imprimir() {
-        let imprimir = "";
-        for (const u of this.contactos.values()) {
-            imprimir += u.imprimir();
+    obtenerContacto(email) {
+        if (!this.ListaContactos.get(email)) {
+            return undefined;
         }
-        return imprimir;
+        return this.ListaContactos.get(email);
     }
-    obtenerUsuario(email) {
-        return this.contactos.get(email);
-    }
-    datosDeUsuario(email) {
-        const usuario = this.obtenerUsuario(email);
-        return `${usuario.getApellido()},${usuario.getNombre()},${usuario.getEmail()}`;
+    datosDeContacto(email) {
+        const contactoSelec = this.obtenerContacto(email);
+        if (!contactoSelec) {
+            return undefined;
+        }
+        return `${contactoSelec.getApellido()},${contactoSelec.getNombre()},${contactoSelec.getEmail()},${contactoSelec.getRelacion()}`;
     }
     getContactos() {
-        return this.contactos;
+        return this.ListaContactos;
     }
 }
 exports.GestorContactos = GestorContactos;

@@ -1,15 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CorreoBase = void 0;
+<<<<<<< HEAD
 const crypto_1 = require("crypto");
+=======
+>>>>>>> 94a34ee0aecc7569703dd04dcc20243a6f770da5
 class CorreoBase {
     constructor(asunto, contenido, emisor) {
         this.asunto = asunto;
         this.contenido = contenido;
         this.emisor = emisor;
+<<<<<<< HEAD
         this.fecha = new Date();
         this.hora = this.getFormattedHour();
         this.id = this.generateId();
+=======
+>>>>>>> 94a34ee0aecc7569703dd04dcc20243a6f770da5
     }
     getAsunto() {
         return this.asunto;
@@ -29,6 +35,7 @@ class CorreoBase {
     setEmisor(emisor) {
         this.emisor = emisor;
     }
+<<<<<<< HEAD
     getId() {
         return this.id;
     }
@@ -51,5 +58,7 @@ class CorreoBase {
         hash.update(dataToHash);
         return hash.digest('hex');
     }
+=======
+>>>>>>> 94a34ee0aecc7569703dd04dcc20243a6f770da5
 }
 exports.CorreoBase = CorreoBase;

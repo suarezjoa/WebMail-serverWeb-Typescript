@@ -1,12 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Usuario = void 0;
+const ContenedorDeCorreos_1 = require("./bandejas/ContenedorDeCorreos");
 class Usuario {
-    constructor(nombre, apellido, Email, bandeja) {
+    constructor(nombre, apellido, Email, contrasenia) {
+        this.bandeja = new ContenedorDeCorreos_1.ContenedorDeCorreos();
         this.nombre = nombre;
+        this.contrasenia = contrasenia;
         this.apellido = apellido;
         this.Email = Email;
-        this.bandeja = bandeja;
+    }
+    update() {
+        return `Nuevo correo de ${this.bandeja.getEstadonotificacion()}`;
     }
     getNombre() {
         return this.nombre;
@@ -28,19 +33,6 @@ class Usuario {
     }
     imprimir() {
         return "[Usuario] " + "datos: " + this.getNombre() + "," + this.getApellido() + "," + this.getEmail();
-    }
-    enviarCorreo(correoEnviado) {
-        const iterador = correoEnviado.getPara()[Symbol.iterator]();
-        for (const usuario of iterador) {
-            usuario.bandeja.agregarABandeja(correoEnviado);
-        }
-        this.bandeja.agregarABandeja(correoEnviado);
-    }
-    mostrarCorreos() {
-        return this.bandeja.mostrarCorreos();
-    }
-    mostrarCorreosfiltrados(filtro) {
-        return this.bandeja.mostrarCorreosfiltrados(filtro);
     }
 }
 exports.Usuario = Usuario;

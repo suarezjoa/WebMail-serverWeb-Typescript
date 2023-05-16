@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-sQ1lgxo6aEtw0q/GE6U86y6U5UP6ScNfz9ziFF+aOncrZrDw0YhO43GYeOyShmCTyPbMXCmBdQ9AYfyh+fdHdA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">ANASHE MAIL MANAGER</a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <span class="mx-3 text-secondary dropdown">
+            <i class="fas fa-user align-middle dropdown-toggle" data-bs-toggle="dropdown"></i>
+            <span class="ms-2">Andrés Briend</span>
+              <div class="dropdown-menu small-menu">
+              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/changeuser';">Configuración</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/contacts';">Contactos</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/login';">Cerrar sección</button>
+            </div>
+          </span>
+        </div>
+      </div>
+    </nav>
+    <div class="container my-5">
+      <h2 id="tituloLogin" class="mb-4 mt-4 text-center">Configuración de la cuenta</h2>
+      <hr>
+      <div class="row">
+        <div class="col-lg-2">
+          <div class="list-group">
+            <a href="/changeuser" class="list-group-item list-group-item-action custom-button">Cambiar nombre de usuario</a>
+            <a href="/changemail" class="list-group-item list-group-item-action custom-button active">Cambiar correo electrónico</a>
+            <a href="/changepass" class="list-group-item list-group-item-action custom-button">Cambiar contraseña</a>
+          </div>
+        </div>
+        <div class="col-lg-10">
+      <form>
+        <div class="mb-3">
+          <label for="inputNewPassword" class="form-label" id="tituloLogin1">Correo Electrónico Actual</label>
+          <input id="inputNewPassword" class="form-control" type="email" placeholder="Ingrese su correo electrónico actual" required>
+        </div>
+        <div class="mb-3">
+          <label for="inputConfirmPassword" class="form-label" id="tituloLogin1">Correo Electrónico Nuevo</label>
+          <input id="inputConfirmPassword" class="form-control" type="email" placeholder="Ingrese su correo electrónico nuevo" required>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </div>
+        <div class="mt-5 text-center">
+          <button type="button" class="btn btn-sm custom-btn" onclick="window.location.href='/inbox'">Inicio</button>
+        </div>
+      </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

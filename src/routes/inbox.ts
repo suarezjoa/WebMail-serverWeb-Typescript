@@ -1,5 +1,4 @@
 import express, { Router } from 'express';
-
 import manejador from '../ManejadorCuentas';
 
 const router = express.Router();

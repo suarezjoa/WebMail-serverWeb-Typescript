@@ -8,7 +8,6 @@ import { Correo } from './back/Correo/Correo';
 import manejador from './ManejadorCuentas';
 
 const app = express();
-
 const PORT = 3000;
 
 // Configuración de Express

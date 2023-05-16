@@ -1,0 +1,32 @@
+mixin redactar()
+    .escribir
+        .escribir-header 
+
+        .escribir-body
+        <div id="modalRedactar" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Redactar correo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="recipient" class="form-label">Destinatario:</label>
+                    <input type="text" class="form-control" id="recipient" placeholder="Ingrese el destinatario">
+                  </div>
+                  <div class="mb-3">
+                    <label for="subject" class="form-label">Asunto:</label>
+                    <input type="text" class="form-control" id="subject" placeholder="Ingrese el asunto">
+                  </div>
+                  <div class="mb-3">
+                    <label for="message" class="form-label">Mensaje:</label>
+                    <textarea class="form-control" id="message" rows="5" placeholder="Ingrese el mensaje"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
