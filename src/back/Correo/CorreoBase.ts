@@ -1,9 +1,9 @@
 import { Usuario } from '../Usuario';
 
 export abstract class CorreoBase {
-    private asunto: string;
-    private contenido: string;
-    private emisor: string;
+    public asunto: string;
+    public contenido: string;
+    public emisor: string;
 
     constructor(asunto: string, contenido: string, emisor: string) {
         this.asunto = asunto;

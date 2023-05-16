@@ -3,7 +3,9 @@ import path from 'path';
 import inbox from './routes/inbox';
 import login from './routes/login';
 import send from './routes/send';
-import { correosRecibidos, guardarCorreo } from './routes/correosRecibidos';
+import message from './routes/message'
+import { Correo } from './back/Correo/Correo';
+import manejador from './ManejadorCuentas';
 
 const app = express();
 
@@ -19,18 +21,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", login);
 app.use('/inbox', inbox);
 app.use('/send', send);
+app.use('/message', message);
 
 // Ruta para enviar correo
 app.post('/enviar-correo', (req: Request, res: Response) => {
   const { destinatario, asunto, mensaje } = req.body;
 
-  const correo = {
-    destinatario,
-    asunto,
-    mensaje
-  };
+  const NuevoCorreo = new Correo(asunto, mensaje, 'cuentaPrueba1@anashe.ashe'); // Crear instancia de la clase Correo
 
-  guardarCorreo(correo); // Guardar el correo en el inbox
+  NuevoCorreo.agregarPara(destinatario); // Agregar destinatario al correo
+
+  // Guardar el correo en el inbox
+  manejador.enviarCorreo(NuevoCorreo)
 
   res.redirect('/inbox'); // Redirigir a la página del inbox
 });
