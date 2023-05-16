@@ -13,6 +13,7 @@ const Correo_1 = require("./back/Correo/Correo");
 const ManejadorCuentas_1 = __importDefault(require("./ManejadorCuentas"));
 const app = (0, express_1.default)();
 const PORT = 3000;
+
 // Configuración de Express
 app.set('views', path_1.default.join(__dirname, 'views'));
 app.set('view engine', 'pug');

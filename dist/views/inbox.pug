@@ -1,0 +1,112 @@
+<!--include mixin-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correos Recibidos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-sQ1lgxo6aEtw0q/GE6U86y6U5UP6ScNfz9ziFF+aOncrZrDw0YhO43GYeOyShmCTyPbMXCmBdQ9AYfyh+fdHdA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">ANASHE MAIL MANAGER</a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <form class="d-flex mx-auto my-2 my-lg-0">
+            <input class="form-control1" type="text" placeholder="Buscar un correo" style="width: 400px; height: 30px;">
+            <button class="btn btn-outline-secondary" id="BotonBuscar" type="submit">Buscar</button>
+          </form>
+          <span class="mx-3 text-secondary dropdown">
+            <i class="fas fa-user align-middle dropdown-toggle" data-bs-toggle="dropdown"></i>
+            <span class="ms-2">Andrés Briend</span>
+              <div class="dropdown-menu small-menu">
+              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/changeuser';">Configuración</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/contacts';">Contactos</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/login';">Cerrar sección</button>
+            </div>
+          </span>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid my-5">
+      <div class="row">
+        <div class="col-12 col-lg-1 mb-4">
+          <h2 class="mb-3 mt-5"></h2>
+          <div class="btn-group-vertical">
+            <a href="#" class="btn custom-btnRedac btn-sm mt-1" data-bs-toggle="modal" data-bs-target="#modalRedactar">Redactar</a>
+            <a href="inbox" class="btn custom-btn btn-lg mt-5">Recibidos</a>
+            <a href="send" class="btn custom-btn btn-lg mt-1">Enviados</a>
+            <a href="all" class="btn custom-btn btn-lg mt-1">Todos</a>
+            <a href="favorites" class="btn custom-btn btn-lg mt-1">Favoritos</a>
+            <a href="trash" class="btn custom-btn btn-lg mt-1">Papelera</a>
+          </div>
+        </div>
+        
+        <div id="modalRedactar" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Redactar correo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="/enviar-correo" method="post">
+                  <div class="mb-3">
+                    <label for="recipient" class="form-label">Destinatario:</label>
+                    <input type="text" class="form-control" id="recipient" name="destinatario" placeholder="Ingrese el destinatario" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="subject" class="form-label">Asunto:</label>
+                    <input type="text" class="form-control" id="subject" name="asunto" placeholder="Ingrese el asunto" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="message" class="form-label">Mensaje:</label>
+                    <textarea class="form-control" id="message" name="mensaje" rows="5" placeholder="Ingrese el mensaje" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="col-12 col-lg-11 mt-5">
+          <div class="card">
+            <div class="card-body">
+              <h2 id="titulos" class="card-title">Correos Recibidos</h2>
+              <hr>
+              <div class="card-text">
+                table.table.table-hover
+                  thead
+                    tr
+                      th(scope="col") De
+                      th(scope="col") Asunto
+                      th(scope="col") Fecha
+                      th(scope="col") Hora
+                  tbody
+                    each correo in correos || []
+                      tr(data-toggle="modal" data-target="#correo-modal")
+                        td= correo.destinatario
+                        td= correo.asunto
+                        td= correo.fecha
+                        td= correo.hora 
+                        td(style="text-align: right;")
+                          button(type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/message';" style="margin-right: 10px;") Ver correo
+                          button(type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#correo-modal" style="margin-left: 10px;") Favoritos
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
