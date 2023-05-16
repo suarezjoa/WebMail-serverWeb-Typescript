@@ -67,6 +67,18 @@ export class ContenedorDeCorreos implements IStrategyBandejas, IFiltros {
       return this.todosLosCorreos ;
     }
 
+    public getBandejaDeEntrada(): Correo[] {
+
+      return this.bandejaDeEntrada;
+
+    }
+
+    public getBandejaDeEnvios() : Correo [] {
+
+      return this.bandejaDeEnvios;
+
+    }
+
     public mostrarCorreos(): string {
       let imprimir: string = "";
       for (const c of this.todosLosCorreos) {

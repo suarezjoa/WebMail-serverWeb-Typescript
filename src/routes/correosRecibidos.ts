@@ -1,8 +1,4 @@
-interface Correo {
-  destinatario: string;
-  asunto: string;
-  mensaje: string;
-}
+import { Correo } from '../back/Correo/Correo';
 
 const correosRecibidos: Correo[] = [];
 
@@ -11,4 +7,3 @@ function guardarCorreo(correo: Correo) {
 }
 
 export { correosRecibidos, guardarCorreo };
-
