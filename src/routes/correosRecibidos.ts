@@ -1,14 +1,6 @@
-interface Correo {
-  destinatario: string;
-  asunto: string;
-  mensaje: string;
-}
+import { GestorUsuario } from "../back/GestorUsuarios";
+import { Correo } from "../back/Correo/Correo";
 
-const correosRecibidos: Correo[] = [];
+const manejador = new GestorUsuario();
 
-function guardarCorreo(correo: Correo) {
-  correosRecibidos.push(correo);
-}
-
-export { correosRecibidos, guardarCorreo };
 

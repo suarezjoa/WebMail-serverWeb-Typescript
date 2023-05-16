@@ -1,12 +1,13 @@
 import express, { Router } from 'express';
-import { correosRecibidos } from './correosRecibidos';
+import { GestorUsuario } from '../back/GestorUsuarios';
 
+const manejador: GestorUsuario = new GestorUsuario();
 
 const router = express.Router();
 
 router.get('/', (_req, res) => {
-    res.render('inbox', { correos: correosRecibidos }); 
-  });
+  const correos = manejador.getManejador().get('cuentaPrueba2@anashe.ashe')?.bandeja.getTodosLosCorreos();
+  res.render('inbox', { correos }); 
+});
 
-
-  export default router;
+export default router;

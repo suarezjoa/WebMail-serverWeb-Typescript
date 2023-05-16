@@ -15,6 +15,7 @@ export class Correo extends CorreoBase {
     public cantidadReceptor(): number {
         return this.para.size;
     }
+    
 
     public getPara(): Set<string> {
         return this.para;
