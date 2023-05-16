@@ -8,7 +8,7 @@ import { Correo } from './back/Correo/Correo';
 import manejador from './ManejadorCuentas';
 
 const app = express();
-
+const product = require("./api/product");
 const PORT = 3000;
 
 // Configuración de Express
@@ -18,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
 // Configuración de las rutas
+app.use("/api/product", product);
 app.use("/", login);
 app.use('/inbox', inbox);
 app.use('/send', send);
