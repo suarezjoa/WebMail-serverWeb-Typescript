@@ -13,6 +13,7 @@ router.get('/', (_req, res) => {
       mensaje: correo.getContenido(),
       fecha: correo.getFecha(),
       hora: correo.getHora(),
+      id: correo.generateId()
     };
   });
   res.render('inbox', { correos });

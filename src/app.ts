@@ -25,15 +25,13 @@ app.use('/message', message);
 
 // Ruta para enviar correo
 app.post('/enviar-correo', (req: Request, res: Response) => {
-  const { destinatario, asunto, mensaje } = req.body;
+  const { destinatario, asunto, mensaje} = req.body;
 
   const NuevoCorreo = new Correo(asunto, mensaje, 'cuentaPrueba1@anashe.ashe'); // Crear instancia de la clase Correo
 
   NuevoCorreo.agregarPara(destinatario); // Agregar destinatario al correo
-
-  // Guardar el correo en el inbox
+ 
   manejador.enviarCorreo(NuevoCorreo)
-
   res.redirect('/inbox'); // Redirigir a la página del inbox
 });
 

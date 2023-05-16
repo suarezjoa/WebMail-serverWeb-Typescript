@@ -18,7 +18,8 @@ router.get('/', (_req: Request, res: Response) => {
       asunto: correoObj.getAsunto(),
       fecha: correoObj.getFecha(),
       hora: correoObj.getHora(),
-      contenido: correoObj.getContenido()
+      contenido: correoObj.getContenido(),
+      id: correoObj.generateId()
     };
   });
   res.render('message', {correos: correos });
