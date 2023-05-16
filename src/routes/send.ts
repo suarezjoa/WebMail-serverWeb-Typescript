@@ -1,11 +1,12 @@
 import express, { Router } from 'express';
+
 import manejador from '../ManejadorCuentas';
 
 const router = express.Router();
 
 router.get('/', (_req, res) => {
 
-  const correos = manejador.getManejador().get('cuentaPrueba1@anashe.ashe')?.bandeja.getBandejaDeEntrada().map(correo => {
+  const correos = manejador.getManejador().get('cuentaPrueba1@anashe.ashe')?.bandeja.getBandejaDeEnvios().map(correo => {
     return {
       destinatario: Array.from(correo.getPara()).join(','),
       asunto: correo.getAsunto(),
@@ -14,7 +15,8 @@ router.get('/', (_req, res) => {
       hora: correo.getHora(),
     };
   });
-  res.render('inbox', { correos });
+
+  res.render('send', {correos: correos });
 });
 
 export default router;

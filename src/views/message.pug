@@ -30,26 +30,21 @@
         </div>
       </div>
     </nav>
-    <div class="container mt-5">
-      <hr>
-      <hr>
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title">Correo</h2>
-          <hr>
-          <div class="card-text">
-            <p><strong>Remitente:</strong> juancitoperez@hotmail.com </p>
-            <p><strong>Asunto:</strong> Pagame amigo</p>
-            <p><strong>Fecha:</strong> 2023-05-04</p>
-            <p><strong>Contenido:</strong>Te queria contar que el domingo en el monumental river es la gloria papa y nadie lo gana, saludos, besos, y recorda pagarme</p>
-          </div>
-            <div class="card-footer d-flex justify-content-center">
-                <div class="text-center">
-                    <button class="btn btn-primary" onclick="window.location.href='/inbox';">Volver</button>
-                </div>
-            </div>
-        </div>
-        </div>
-        </div>
+    div.container.mt-5
+      hr
+      hr
+      each correo in correos
+        div.card
+          div.card-body
+            h2.card-title Correo
+            hr
+            div.card-text
+              p Remitente: #{correo.remitente}
+              p Asunto: #{correo.asunto}
+              p Fecha: #{correo.fecha}  Hora: #{correo.hora}
+              p Contenido: #{correo.contenido}
+            div.card-footer.d-flex.justify-content-center
+              div.text-center
+                button.btn.btn-primary(onclick="window.location.href='/inbox';") Volver
 </body>
 </html>
