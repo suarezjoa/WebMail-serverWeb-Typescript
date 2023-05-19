@@ -1,30 +1,10 @@
 doctype html
 html(lang="en")
   head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Correos Recibidos
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css")
-    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
-    link(rel="stylesheet", href="styles.css")
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css", integrity="sha512-sQ1lgxo6aEtw0q/GE6U86y6U5UP6ScNfz9ziFF+aOncrZrDw0YhO43GYeOyShmCTyPbMXCmBdQ9AYfyh+fdHdA==", crossorigin="anonymous", referrerpolicy="no-referrer")
+    include head
   body
-    nav.navbar.navbar-expand-lg.navbar-light.fixed-top
-      .container-fluid
-        button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
-          span.navbar-toggler-icon
-        a.navbar-brand(href="/inbox") ANASHE MAIL MANAGER
-        div.collapse.navbar-collapse.justify-content-end#navbarNav
-          span.mx-3.text-secondary.dropdown
-            span.ms-2 Andrés Briend
-            i.material-icons.icon-spacing.ml-2.person-icon
-            i.material-icons.align-middle.dropdown-toggle(data-bs-toggle="dropdown") person
-            div.dropdown-menu.small-menu
-              button#BotonesPerfil.dropdown-item(onclick="window.location.href='/changeuser';") Configuración
-              div.dropdown-divider
-              button#BotonesPerfil.dropdown-item(onclick="window.location.href='/contacts';") Contactos
-              div.dropdown-divider
-              button#BotonesPerfil.dropdown-item(onclick="window.location.href='/login';") Cerrar sesión
+    include navbar
     div.container-fluid.my-5
       div.row
         div.col-12.col-lg-1.mb-4

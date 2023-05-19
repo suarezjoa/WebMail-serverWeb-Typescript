@@ -1,95 +1,52 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Correos Eliminados</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-sQ1lgxo6aEtw0q/GE6U86y6U5UP6ScNfz9ziFF+aOncrZrDw0YhO43GYeOyShmCTyPbMXCmBdQ9AYfyh+fdHdA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">ANASHE MAIL MANAGER</a>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <form class="d-flex mx-auto my-2 my-lg-0">
-            <input class="form-control1" type="text" placeholder="Buscar un correo" style="width: 400px; height: 30px;">
-            <button class="btn btn-outline-secondary" id="BotonBuscar" type="submit">Buscar</button>
-          </form>
-          <span class="mx-3 text-secondary dropdown">
-            <i class="fas fa-user align-middle dropdown-toggle" data-bs-toggle="dropdown"></i>
-            <span class="ms-2">Andrés Briend</span>
-              <div class="dropdown-menu small-menu">
-              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/changeuser';">Configuración</button>
-              <div class="dropdown-divider"></div>
-              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/contacts';">Contactos</button>
-              <div class="dropdown-divider"></div>
-              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/login';">Cerrar sección</button>
-            </div>
-          </span>
-        </div>
-      </div>
-    </nav>
-    <div class="container-fluid my-5">
-      <div class="row">
-        <div class="col-12 col-lg-1 mb-4">
-          <h2 class="mb-3 mt-5"></h2>
-          <div class="btn-group-vertical">
-            <a href="compose" class="btn custom-btnRedac btn-sm mt-1">Redactar</a>
-            <a href="inbox" class="btn custom-btn btn-lg mt-5">Recibidos</a>
-            <a href="send" class="btn custom-btn btn-lg mt-1">Enviados</a>
-            <a href="all" class="btn custom-btn btn-lg mt-1">Todos</a>
-            <a href="favorites" class="btn custom-btn btn-lg mt-1">Favoritos</a>
-            <a href="trash" class="btn custom-btn btn-lg mt-1">Papelera</a>
-          </div>
-        </div>
-
-        <div class="col-12 col-lg-11 mt-5">
-          <div class="card">
-            <div class="card-body">
-              <h2 id="titulos" class="card-title">Correos Eliminados</h2>
-              <hr>
-              <div class="card-text">
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">De</th>
-                      <th scope="col">Asunto</th>
-                      <th scope="col">Fecha</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr data-toggle="modal" data-target="#correo1-modal">
-                      <td>juancitoperez@hotmail.com</td>
-                      <td>Pagame amigo</td>
-                      <td>2023-05-04</td>
-                      <td style="text-align: right;"><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/message';" style="margin-right: 10px;">Ver</button><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#correo3-modal" style="margin-left: 10px;">Restaurar</button></td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#correo2-modal">
-                      <td>alfonzinricardo@gmail.com</td>
-                      <td>MILEI 2023</td>
-                      <td>2023-05-03</td>
-                      <td style="text-align: right;"><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/message';" style="margin-right: 10px;">Ver</button><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#correo3-modal" style="margin-left: 10px;">Restaurar</button></td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#correo3-modal">
-                      <td>vegetta777@hotmail.com</td>
-                      <td>Te dejaste diamantes en el minuto 10</td>
-                      <td>2023-05-02</td>
-                      <td style="text-align: right;"><button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='/message';" style="margin-right: 10px;">Ver</button><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#correo3-modal" style="margin-left: 10px;">Restaurar</button></td>
-                    </tr>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
-  </body>
-</html>
+doctype html
+html(lang="en")
+  head
+    title Correos Eliminados
+    include head
+  body
+    include navbar
+      div.row
+        div.col-12.col-lg-1.mb-4
+          h2.mb-3.mt-5
+          div.btn-group-vertical
+            a.btn.custom-btnRedac.btn-sm.mt-1(href="compose") Redactar
+            a.btn.custom-btn.btn-lg.mt-5(href="inbox") Recibidos
+            a.btn.custom-btn.btn-lg.mt-1(href="send") Enviados
+            a.btn.custom-btn.btn-lg.mt-1(href="all") Todos
+            a.btn.custom-btn.btn-lg.mt-1(href="favorites") Favoritos
+            a.btn.custom-btn.btn-lg.mt-1(href="trash") Papelera
+        div.col-12.col-lg-11.mt-5
+          div.card
+            div.card-body
+              h2#titulos.card-title Correos Eliminados
+              hr
+              div.card-text
+                table.table.table-hover
+                  thead
+                    tr
+                      th(scope="col") De
+                      th(scope="col") Asunto
+                      th(scope="col") Fecha
+                  tbody
+                    tr(data-toggle="modal", data-target="#correo1-modal")
+                      td juancitoperez@hotmail.com
+                      td Pagame amigo
+                      td 2023-05-04
+                      td(style="text-align: right;")
+                        button.btn.btn-primary.btn-sm(onclick="window.location.href='/message';", style="margin-right: 10px;") Ver
+                        button.btn.btn-primary.btn-sm(data-toggle="modal", data-target="#correo3-modal", style="margin-left: 10px;") Restaurar
+                    tr(data-toggle="modal", data-target="#correo2-modal")
+                      td alfonzinricardo@gmail.com
+                      td MILEI 2023
+                      td 2023-05-03
+                      td(style="text-align: right;")
+                        button.btn.btn-primary.btn-sm(onclick="window.location.href='/message';", style="margin-right: 10px;") Ver
+                        button.btn.btn-primary.btn-sm(data-toggle="modal", data-target="#correo3-modal", style="margin-left: 10px;") Restaurar
+                    tr(data-toggle="modal", data-target="#correo3-modal")
+                      td vegetta777@hotmail.com
+                      td Te dejaste diamantes en el minuto 10
+                      td 2023-05-02
+                      td(style="text-align: right;")
+                        button.btn.btn-primary.btn-sm(onclick="window.location.href='/message';", style="margin-right: 10px;") Ver
+                        button.btn.btn-primary.btn-sm(data-toggle="modal", data-target="#correo3-modal", style="margin-left: 10px;") Restaurar
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js")
