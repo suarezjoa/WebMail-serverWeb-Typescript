@@ -1,44 +1,31 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="animations.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-sQ1lgxo6aEtw0q/GE6U86y6U5UP6ScNfz9ziFF+aOncrZrDw0YhO43GYeOyShmCTyPbMXCmBdQ9AYfyh+fdHdA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">ANASHE MAIL MANAGER</a>
-      </div>
-    </nav>
-    <div class="container-fluid my-5">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6">
-          <form action="/login" method="POST">
-            <h2 id="tituloLogin" class="mb-4 mt-4 text-center">Iniciar Sesión</h2>
-            <div class="form-group">
-              <div class="form-group">
-                <label for="email" id="tituloLogin1">Correo Electrónico</label>
-                <input class="form-control" id="email" type="email" placeholder="Ingrese su correo electrónico" name="email" required />
-              </div>
-              <div class="form-group">
-                <label for="password" id="tituloLogin1">Contraseña</label>
-                <input class="form-control" id="password" type="password" placeholder="Ingrese su contraseña" name="password" required />
-              </div>
-              
-            <div style="text-align: center;">
-              <button class="btn custom-btn2 btn-lg mt-4 btn-animations" type="submit">Iniciar Sesión</button>
-              <div style="margin-top: 50px;">
-            <a href="/register">¿No tienes una cuenta? Regístrate</a>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" integrity="sha512-QyJCEpWCr3xqEjKk9lfVZ0KdW4+qzs4JzCZHw10HY02kFjKxN2+sc5X5bZtvUG/z8WgswfKvFmpaGy1JQg+Bg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  </body>
-</html>
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Bienvenido
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css")
+    link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet", href="animations.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css", integrity="sha512-sQ1lgxo6aEtw0q/GE6U86y6U5UP6ScNfz9ziFF+aOncrZrDw0YhO43GYeOyShmCTyPbMXCmBdQ9AYfyh+fdHdA==", crossorigin="anonymous", referrerpolicy="no-referrer")
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.fixed-top
+      div.container-fluid
+        a.navbar-brand(href="#") ANASHE MAIL MANAGER
+    div.container-fluid.my-5
+      div.row.justify-content-center
+        div.col-12.col-md-8.col-lg-6
+          form(action="/login", method="POST")
+            h2#tituloLogin.mb-4.mt-4.text-center Iniciar Sesión
+            div.form-group
+              div.form-group
+                label#tituloLogin1(for="email") Correo Electrónico
+                input.form-control#email(type="email", placeholder="Ingrese su correo electrónico", name="email", required)
+              div.form-group
+                label#tituloLogin1(for="password") Contraseña
+                input.form-control#password(type="password", placeholder="Ingrese su contraseña", name="password", required)
+            div(style="text-align: center;")
+              button.btn.custom-btn2.btn-lg.mt-4.btn-animations(type="submit") Iniciar Sesión
+              div(style="margin-top: 50px;")
+                a(href="/register") ¿No tienes una cuenta? Regístrate
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" integrity="sha512-QyJCEpWCr3xqEjKk9lfVZ0KdW4+qzs4JzCZHw10HY02kFjKxN2+sc5X5bZtvUG/z8WgswfKvFmpaGy1JQg+Bg==" crossorigin="anonymous" referrerpolicy="no-referrer")

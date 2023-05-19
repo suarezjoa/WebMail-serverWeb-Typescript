@@ -71,7 +71,7 @@ body {
   font-weight: bold;
 }
 
-.btn-primary {
+.btn-primary1 {
   background-color: #6500a0;
   color: #ffffff;
   border-radius: 10px;
@@ -86,6 +86,63 @@ body {
 .btn-primary:hover {
   background-color: #006c87;
   border-color: #006c87;
+  color: #fff;
+}
+
+.btn-primary1{
+  background-color: #1d00a0;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  font-family: "Courier New";
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.btn-primary1:hover {
+  background-color: #006c87;
+  border-color: #006c87;
+  color: #fff;
+}
+
+.btn-primary2{
+  background-color: #777777;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  font-family: "Courier New";
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.btn-primary2:hover {
+  background-color: #78b47a;
+  border-color: #78b47a;
+  color: #fff;
+}
+
+.btn-primary3{
+  background-color: #a01919;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  font-family: "Courier New";
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.btn-primary3:hover {
+  background-color: #da0303;
+  border-color: #da0303;
   color: #fff;
 }
 
@@ -281,3 +338,78 @@ a#enlace-login {
   margin-bottom: 10px;
 }
 
+.modal-content{
+  background-color: rgba(7, 7, 7, 0.8);
+  border: none;
+  box-shadow: none;
+}
+
+.modal-title{
+  font-family: "Courier New";
+  font-weight: bold;
+  font-size: 23px;
+  color: #ffffff;
+}
+
+#desti-asun-men{
+  font-family: "Courier New";
+  font-weight: bold;
+  font-size: 17x;
+  color: #ffffff;
+}
+
+#recipient{
+  font-family: "Courier New";
+  font-weight: bold;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+#subject{
+  font-family: "Courier New";
+  font-weight: bold;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+#message{
+  font-family: "Courier New";
+  font-weight: bold;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+#CloseModal {
+  filter: invert(1);
+  font-size: 1.5rem;
+}
+
+#modalRedactar input[type="text"],
+#modalRedactar textarea {
+  color: black;
+}
+
+.confirmation-message {
+  font-family: "Courier New";
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* Cambiar la fuente y el color del texto en los campos del formulario */
+#inputNewPassword,
+#inputConfirmPassword {
+  font-family: "Courier New";
+}
+
+/* Cambiar el estilo del título "Nombre y Apellido" */
+.form-title {
+  font-family: "Courier New";
+  font-weight: bold;
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.icon-spacing {
+  margin-right: 0.5rem; /* Ajusta el valor según el espacio deseado */
+}

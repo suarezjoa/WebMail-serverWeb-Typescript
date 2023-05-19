@@ -1,66 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contactos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-sQ1lgxo6aEtw0q/GE6U86y6U5UP6ScNfz9ziFF+aOncrZrDw0YhO43GYeOyShmCTyPbMXCmBdQ9AYfyh+fdHdA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">ANASHE MAIL MANAGER</a>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <span class="mx-3 text-secondary dropdown">
-            <i class="fas fa-user align-middle dropdown-toggle" data-bs-toggle="dropdown"></i>
-            <span class="ms-2">Andrés Briend</span>
-            <div class="dropdown-menu small-menu">
-              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/changeuser';">Configuración</button>
-              <div class="dropdown-divider"></div>
-              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/contacts';">Contactos</button>
-              <div class="dropdown-divider"></div>
-              <button class="dropdown-item" id="BotonesPerfil" onclick="window.location.href='/login';">Cerrar sesión</button>
-            </div>
-          </span>
-        </div>
-      </div>
-    </nav>
-    <div class="container mt-5">
-  <h2 id="tituloLogin" class="mb-4 mt-4 text-center">Contactos</h2>
-  <button class="btn btn-success mb-3" onclick="window.location.href='/newcontact';">Agregar un nuevo contacto</button>
-  <div class="contact">
-    <h4>Messi</h4>
-    <p>lionelmessi@gmail.com</p>
-    <div class="btn-group mt-1">
-      <button class="btn btn-primary" onclick="window.location.href='/compose';">Enviar un correo</button>
-      <button class="btn btn-danger" onclick="eliminarContacto('Messi')">Eliminar Contacto</button>
-    </div>
-  </div>
-  <div class="contact">
-    <h4>Milei</h4>
-    <p>javierleonmilei@gmail.com</p>
-    <div class="btn-group mt-1">
-      <button class="btn btn-primary" onclick="window.location.href='/compose';">Enviar un correo</button>
-      <button class="btn btn-danger" onclick="eliminarContacto('Milei')">Eliminar Contacto
-    </div>
-  </div>
-  <div class="contact">
-    <h4>WillyRex</h4>
-    <p>vegettaywilly@gmail.com</p>
-    <div class="btn-group mt-1">
-      <button class="btn btn-primary" onclick="window.location.href='/compose';">Enviar un correo</button>
-      <button class="btn btn-danger" onclick="eliminarContacto('WillyRex')">Eliminar Contacto</button>
-    </div>
-  </div>
-  <div class="mt-5 text-center">
-    <button type="button" class="btn btn-sm custom-btn" onclick="window.location.href='/inbox'">Inicio</button>
-  </div>
-        
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
-    </body>
-</html>
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Contactos
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css")
+    link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css", integrity="sha512-sQ1lgxo6aEtw0q/GE6U86y6U5UP6ScNfz9ziFF+aOncrZrDw0YhO43GYeOyShmCTyPbMXCmBdQ9AYfyh+fdHdA==", crossorigin="anonymous", referrerpolicy="no-referrer")
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.fixed-top
+      .container-fluid
+        button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        a.navbar-brand(href="/inbox") ANASHE MAIL MANAGER
+        div.collapse.navbar-collapse.justify-content-end#navbarNav
+          span.mx-3.text-secondary.dropdown
+            span.ms-2 Andrés Briend
+            i.material-icons.icon-spacing.ml-2.person-icon
+            i.material-icons.align-middle.dropdown-toggle(data-bs-toggle="dropdown") person
+            div.dropdown-menu.small-menu
+              button#BotonesPerfil.dropdown-item(onclick="window.location.href='/changeuser';") Configuración
+              div.dropdown-divider
+              button#BotonesPerfil.dropdown-item(onclick="window.location.href='/contacts';") Contactos
+              div.dropdown-divider
+              button#BotonesPerfil.dropdown-item(onclick="window.location.href='/login';") Cerrar sesión
+    div#modalRedactar.modal.fade
+      div.modal-dialog
+        div.modal-content
+          div.modal-header
+            h5.modal-title Redactar correo
+            button.btn-close(data-bs-dismiss="modal", id="CloseModal", aria-label="Close")
+          div.modal-body
+            form(id="composeForm", action="/enviar-correo", method="post")
+              div.mb-3
+                label.form-label#desti-asun-men(for="subject") Asunto:
+                input.form-control(type="text", id="subject", name="asunto", placeholder="Ingrese el asunto", required)
+              div.mb-3
+                label.form-label#desti-asun-men(for="message") Mensaje:
+                textarea.form-control(id="message", name="mensaje", rows="5", placeholder="Ingrese el mensaje", required)
+              button.btn.btn-primary1.float-end(type="submit") Enviar
+    div.container.mt-5
+      h2#tituloLogin.mb-4.mt-4.text-center Contactos
+      button.btn.btn-success.mb-3(onclick="window.location.href='/newcontact';") Agregar un nuevo contacto
+      .contact
+        h4 Messi
+        p lionelmessi@gmail.com
+        div.btn-group.mt-1
+          button.btn.btn-primary1(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
+          button.btn.btn-danger(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
+      .contact
+        h4 Milei
+        p javierleonmilei@gmail.com
+        div.btn-group.mt-1
+          button.btn.btn-primary1(onclick="window.location.href=''") Enviar un correo
+          button.btn.btn-danger(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
+      .contact
+        h4 WillyRex
+        p vegettaywilly@gmail.com
+        div.btn-group.mt-1
+          button.btn.btn-primary1(onclick="window.location.href='/compose';") Enviar un correo
+          button.btn.btn-danger(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
+      .mt-5.text-center
+        button.btn.btn-sm.custom-btn(type="button", onclick="window.location.href='#'") Inicio
+    div.modal.fade#confirmarEliminarModal(tabindex="-1", aria-labelledby="confirmarEliminarModalLabel", aria-hidden="true")
+      div.modal-dialog.modal-dialog-centered
+        div.modal-content
+          div.modal-header
+            h5.modal-title#confirmarEliminarModalLabel Confirmar Eliminación
+            button.btn-close(data-bs-dismiss="modal", id="CloseModal", aria-label="Close")
+          div.modal-body
+            p.confirmation-message ¿Estás seguro que deseas eliminar este contacto?
+          div.modal-footer
+            button.btn.btn-primary2(type="button", data-bs-dismiss="modal") Cancelar
+            button.btn.btn-primary3(type="button", data-bs-dismiss="modal") Eliminar
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" type="module")
+    script.
+      import { getElementById } from "./utils";
+      
+      const composeForm = getElementById("composeForm");
+      
+      composeForm.addEventListener("submit", (event) => {
+        event.preventDefault(); 
+        const form = getElementById("composeForm");
+        const formData = new FormData(form);
+        const xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action, true);
+        xhr.send(formData);
+      });

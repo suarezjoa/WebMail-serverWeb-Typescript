@@ -24,15 +24,21 @@ app.use('/message', message);
 
 // Ruta para enviar correo
 app.post('/enviar-correo', (req: Request, res: Response) => {
-  const { destinatario, asunto, mensaje} = req.body;
+  const { destinatario, asunto, mensaje } = req.body;
+  const currentPage = req.url;
 
-  const NuevoCorreo = new Correo(asunto, mensaje, 'cuentaPrueba1@anashe.ashe'); // Crear instancia de la clase Correo
+  const NuevoCorreo = new Correo(asunto, mensaje, 'andresbriend@anashe.ashe');
+  NuevoCorreo.agregarPara(destinatario);
 
-  NuevoCorreo.agregarPara(destinatario); // Agregar destinatario al correo
- 
-  manejador.enviarCorreo(NuevoCorreo)
-  res.redirect('/inbox'); // Redirigir a la página del inbox
+  manejador.enviarCorreo(NuevoCorreo);
+
+  if (currentPage.includes('/contacts')) {
+    res.redirect('/contacts'); // Redirigir a la página de contactos si se envía desde la página de contactos
+  } else {
+    res.redirect('/inbox'); // De lo contrario, redirigir a la página del inbox
+  }
 });
+
 
 // Configuración del servidor
 app.listen(PORT, () => {
@@ -40,13 +46,29 @@ app.listen(PORT, () => {
 });
 
 
-/*app.get('/', (req: Request, res: Response) => {
-  res.render('login');
+app.get('/changeuser', (req: Request, res: Response) => {
+  res.render('changeuser');
 });
 
 
-app.get('/login', (req, res) => {
-  res.render('login');
+app.get('/changepass', (req, res) => {
+  res.render('changepass');
+});
+
+app.get('/changemail', (req, res) => {
+  res.render('changemail');
+});
+
+app.get('/contacts', (req, res) => {
+  res.render('contacts');
+});
+
+app.get('/newcontact', (req, res) => {
+  res.render('newcontact');
+});
+
+app.get('/register', (req, res) => {
+  res.render('register');
 });
 
 app.post('/login', (req: Request, res: Response) => {
@@ -57,4 +79,4 @@ app.post('/login', (req: Request, res: Response) => {
   } else {
     res.render('login', { error: 'Los datos ingresados no son correctos' });
   }
-});*/
+});
