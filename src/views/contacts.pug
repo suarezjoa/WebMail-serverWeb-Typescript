@@ -53,13 +53,13 @@ html(lang="en")
         h4 Milei
         p javierleonmilei@gmail.com
         div.btn-group.mt-1
-          button.btn.btn-primary1(onclick="window.location.href=''") Enviar un correo
+          button.btn.btn-primary1(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
           button.btn.btn-danger(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
       .contact
         h4 WillyRex
         p vegettaywilly@gmail.com
         div.btn-group.mt-1
-          button.btn.btn-primary1(onclick="window.location.href='/compose';") Enviar un correo
+          button.btn.btn-primary1(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
           button.btn.btn-danger(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
       .mt-5.text-center
         button.btn.btn-sm.custom-btn(type="button", onclick="window.location.href='#'") Inicio
