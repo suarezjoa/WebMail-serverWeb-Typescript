@@ -17,7 +17,7 @@ html(lang="en")
           div.modal-dialog
             div.modal-content
               div.modal-header
-                h5.modal-title Redactar correo
+                h5.modal-title Redactar correo 
                 button.btn-close(data-bs-dismiss="modal", id="CloseModal", aria-label="Close")
               div.modal-body
                 form(action="/enviar-correo", method="post")
@@ -52,7 +52,7 @@ html(lang="en")
                         td= correo.fecha
                         td= correo.hora
                         td(style="text-align: right;")
-                          button.btn.btn-primary1.btn-sm(data-bs-toggle="modal", data-bs-target="#correoModal"+correo.id) Ver correo
+                          button.btn.btn-primary1.btn-sm.btn-animations(data-bs-toggle="modal", data-bs-target="#correoModal"+correo.id) Ver correo
                           div.modal.fade(id="correoModal"+correo.id)
                             .modal-dialog
                               .modal-content
@@ -66,5 +66,5 @@ html(lang="en")
                                   p.custom-font1 Contenido: #{correo.contenido}
                                 .modal-footer.d-flex.justify-content-center
                                   div.text-center
-                                    button.btn.btn-primary1(onclick="window.location.href='/send';") Volver
+                                    button.btn.btn-primary1.btn-animations(onclick="window.location.href='/send';") Volver
   script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js")

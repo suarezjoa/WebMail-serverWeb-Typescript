@@ -19,28 +19,28 @@ html(lang="en")
               div.mb-3
                 label.form-label#desti-asun-men(for="message") Mensaje:
                 textarea.form-control(id="message", name="mensaje", rows="5", placeholder="Ingrese el mensaje", required)
-              button.btn.btn-primary1.float-end(type="submit") Enviar
+              button.btn.btn-primary1.float-end.btn-animations(type="submit") Enviar
     div.container.mt-5
       h2#tituloLogin.mb-4.mt-4.text-center Contactos
-      button.btn.btn-success.mb-3(onclick="window.location.href='/newcontact';") Agregar un nuevo contacto
+      button.btn.btn-success.mb-3.btn-animations(onclick="window.location.href='/newcontact';") Agregar un nuevo contacto
       .contact
         h4 Messi
         p lionelmessi@gmail.com
         div.btn-group.mt-1
-          button.btn.btn-primary1(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
-          button.btn.btn-danger(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
+          button.btn.btn-primary1.btn-animations(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
+          button.btn.btn-danger.btn-animations(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
       .contact
         h4 Milei
         p javierleonmilei@gmail.com
         div.btn-group.mt-1
-          button.btn.btn-primary1(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
-          button.btn.btn-danger(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
+          button.btn.btn-primary1.btn-animations(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
+          button.btn.btn-danger.btn-animations(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
       .contact
         h4 WillyRex
         p vegettaywilly@gmail.com
         div.btn-group.mt-1
-          button.btn.btn-primary1(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
-          button.btn.btn-danger(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
+          button.btn.btn-primary1.btn-animations(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
+          button.btn.btn-danger.btn-animations(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
       .mt-5.text-center
         button.btn.btn-sm.custom-btn.btn-animations(type="button", onclick="window.location.href='#'") Inicio
     div.modal.fade#confirmarEliminarModal(tabindex="-1", aria-labelledby="confirmarEliminarModalLabel", aria-hidden="true")
