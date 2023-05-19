@@ -30,11 +30,7 @@ app.post('/enviar-correo', (req: Request, res: Response) => {
 
   manejador.enviarCorreo(NuevoCorreo);
 
-  if (currentPage.includes('/contacts')) {
-    res.redirect('/contacts'); // Redirigir a la página de contactos si se envía desde la página de contactos
-  } else {
-    res.redirect('/inbox'); // De lo contrario, redirigir a la página del inbox
-  }
+  res.redirect('/inbox');
 });
 
 

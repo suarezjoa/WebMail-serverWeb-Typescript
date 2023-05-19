@@ -55,16 +55,3 @@ html(lang="en")
             button.btn.btn-primary2(type="button", data-bs-dismiss="modal") Cancelar
             button.btn.btn-primary3(type="button", data-bs-dismiss="modal") Eliminar
     script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" type="module")
-    script.
-      import { getElementById } from "./utils";
-      
-      const composeForm = getElementById("composeForm");
-      
-      composeForm.addEventListener("submit", (event) => {
-        event.preventDefault(); 
-        const form = getElementById("composeForm");
-        const formData = new FormData(form);
-        const xhr = new XMLHttpRequest();
-        xhr.open(form.method, form.action, true);
-        xhr.send(formData);
-      });
