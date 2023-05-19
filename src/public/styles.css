@@ -339,7 +339,7 @@ a#enlace-login {
 }
 
 .modal-content{
-  background-color: rgba(7, 7, 7, 0.8);
+  background-color: rgba(7, 7, 7, 0.555);
   border: none;
   box-shadow: none;
 }
@@ -412,4 +412,22 @@ a#enlace-login {
 
 .icon-spacing {
   margin-right: 0.5rem; /* Ajusta el valor según el espacio deseado */
+}
+
+.custom-font {
+  font-family: "Courier New";
+  font-weight: bold;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.custom-font1 {
+  font-family: "Courier New";
+  font-weight: bold;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.text-left {
+  text-align: left;
 }

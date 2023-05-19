@@ -66,11 +66,25 @@ html(lang="en")
                       th(scope="col") Hora
                   tbody
                     each correo in correos || []
-                      tr(data-toggle="modal" data-target="#correo-modal")
+                      tr
                         td= correo.destinatario
                         td= correo.asunto
                         td= correo.fecha
                         td= correo.hora
                         td(style="text-align: right;")
-                          button.btn.btn-primary1.btn-sm(onclick=`window.location.href='/send/message/${correo.id}'`) Ver correo
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js")
+                          button.btn.btn-primary1.btn-sm(data-bs-toggle="modal", data-bs-target="#correoModal"+correo.id) Ver correo
+                          div.modal.fade(id="correoModal"+correo.id)
+                            .modal-dialog
+                              .modal-content
+                                .modal-header
+                                  h5.modal-title.custom-font Ver correo
+                                  button.btn-close(data-bs-dismiss="modal", aria-label="Close")
+                                .modal-body.text-left
+                                  p.custom-font1 Destinatario: #{correo.destinatario}
+                                  p.custom-font1 Asunto: #{correo.asunto}
+                                  p.custom-font1 Fecha: #{correo.fecha} Hora: #{correo.hora}
+                                  p.custom-font1 Contenido: #{correo.contenido}
+                                .modal-footer.d-flex.justify-content-center
+                                  div.text-center
+                                    button.btn.btn-primary1(onclick="window.location.href='/send';") Volver
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js")

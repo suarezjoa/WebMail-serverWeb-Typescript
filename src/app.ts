@@ -3,7 +3,6 @@ import path from 'path';
 import inbox from './routes/inbox';
 import login from './routes/login';
 import send from './routes/send';
-import message from './routes/message'
 import { Correo } from './back/Correo/Correo';
 import manejador from './ManejadorCuentas';
 
@@ -20,7 +19,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", login);
 app.use('/inbox', inbox);
 app.use('/send', send);
-app.use('/message', message);
 
 // Ruta para enviar correo
 app.post('/enviar-correo', (req: Request, res: Response) => {
