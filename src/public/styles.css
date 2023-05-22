@@ -48,7 +48,6 @@ form.d-flex.mx-auto.my-2.my-lg-0 button {
 
 body {
   background-image: url("mariofondo.gif");
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -431,4 +430,3 @@ a#enlace-login {
 .text-left {
   text-align: left;
 }
-
