@@ -14,9 +14,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Configuración de las rutas
-app.use("/", login);
+app.use("/login", login);
 app.use('/inbox', inbox);
 app.use('/send', send);
 
@@ -32,13 +33,6 @@ app.post('/enviar-correo', (req: Request, res: Response) => {
 
   res.redirect('/inbox');
 });
-
-
-// Configuración del servidor
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
-
 
 app.get('/changeuser', (req: Request, res: Response) => {
   res.render('changeuser');
@@ -65,12 +59,7 @@ app.get('/register', (req, res) => {
   res.render('register');
 });
 
-app.post('/login', (req: Request, res: Response) => {
-  const { email, password } = req.body;
-
-  if (email === 'admin@gmail.com' && password === 'admin') {
-    res.render('inbox');
-  } else {
-    res.render('login', { error: 'Los datos ingresados no son correctos' });
-  }
+// Configuración del servidor
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
