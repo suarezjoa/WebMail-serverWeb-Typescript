@@ -3,7 +3,7 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/', (_req, res) => {
+router.get('/send', (_req, res) => {
   const correos = manejador.getManejador().get('andresbriend@anashe.ashe')?.bandeja.getBandejaDeEnvios().map(correo => {
     return {
       destinatario: Array.from(correo.getPara()).join(','),
