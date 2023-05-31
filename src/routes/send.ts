@@ -3,8 +3,9 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/send', (_req, res) => {
-  const correos = manejador.getManejador().get('andresbriend@anashe.ashe')?.bandeja.getBandejaDeEnvios().map(correo => {
+router.get('/', (_req, res) => {
+  const bandejaDeEnvios = manejador.getManejador().get('andresbriend@anashe.ashe')?.bandeja.getBandejaDeEnvios();
+  const correos = bandejaDeEnvios ? bandejaDeEnvios.map(correo =>{
     return {
       destinatario: Array.from(correo.getPara()).join(','),
       asunto: correo.getAsunto(),
@@ -13,7 +14,7 @@ router.get('/send', (_req, res) => {
       hora: correo.getHora(),
       id: correo.generateId(),
     };
-  });
+  }) : [];
 
   res.render('send', { correos: correos });
 });

@@ -9,16 +9,42 @@ import manejador from './ManejadorCuentas';
 const app = express();
 const PORT = 3000;
 
+const cookieParser = require("cookie-parser");
+const session = require('express-session');
+
+
 // Configuración de Express
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.json());
 // Configuración de las rutas
-app.use("/", login);
+app.use("/login", login );
 app.use('/inbox', inbox);
 app.use('/send', send);
+//confuguracoin de no se que, de la seciones ya no tengo idea lo que estoy tocando
+
+declare module 'express-session' {
+  interface SessionData {
+     email: string ;
+     password: string ;
+     autorizacion: boolean;
+ }
+}
+  
+// Configuración de cookieParse
+app.use(cookieParser("nashe es el secreto"));
+// Configuración de sesiones
+app.use(session({
+  secret: "nashe es el secreto",
+  resave: true,
+  saveUnitialized: true,
+  cookie: {
+    sameSite: "strict",maxAge: 10 * 60 * 1000, // Duración máxima de la cookie en milisegundos (10 minutos)
+  }
+}))
+
 
 // Ruta para enviar correo
 app.post('/enviar-correo', (req: Request, res: Response) => {
@@ -32,13 +58,6 @@ app.post('/enviar-correo', (req: Request, res: Response) => {
 
   res.redirect('/inbox');
 });
-
-
-// Configuración del servidor
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
-
 
 app.get('/changeuser', (req: Request, res: Response) => {
   res.render('changeuser');
@@ -65,12 +84,7 @@ app.get('/register', (req, res) => {
   res.render('register');
 });
 
-app.post('/login', (req: Request, res: Response) => {
-  const { email, password } = req.body;
-
-  if (email === 'admin@gmail.com' && password === 'admin') {
-    res.render('inbox');
-  } else {
-    res.render('login', { error: 'Los datos ingresados no son correctos' });
-  }
+// Configuración del servidor
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });

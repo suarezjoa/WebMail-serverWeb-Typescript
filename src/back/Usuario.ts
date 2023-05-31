@@ -1,6 +1,7 @@
 import { IObserver } from "./Interfaces/IObserver";
 import { ContenedorDeCorreos } from './bandejas/ContenedorDeCorreos';
 
+
 export class Usuario implements IObserver {
     protected nombre: string;
     protected apellido: string;
@@ -36,6 +37,9 @@ export class Usuario implements IObserver {
 
     public setApellido(apellido: string): void {
         this.apellido = apellido;
+    }
+    public getContrasenia(): string {
+        return this.contrasenia;
     }
 
     public getEmail(): string {
