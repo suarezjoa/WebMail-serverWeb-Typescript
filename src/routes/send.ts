@@ -3,8 +3,15 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/', (_req, res) => {
-  const bandejaDeEnvios = manejador.getManejador().get('andresbriend@anashe.ashe')?.bandeja.getBandejaDeEnvios();
+const cookieParser = require("cookie-parser");
+
+router.use(cookieParser());
+
+router.get('/', (req, res) => {
+  
+  const cuentaEmail = req.cookies.email;
+
+  const bandejaDeEnvios = manejador.getManejador().get(cuentaEmail)?.bandeja.getBandejaDeEnvios();
   const correos = bandejaDeEnvios ? bandejaDeEnvios.map(correo =>{
     return {
       destinatario: Array.from(correo.getPara()).join(','),

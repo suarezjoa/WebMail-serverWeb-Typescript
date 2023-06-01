@@ -47,7 +47,7 @@ html(lang="en")
                   tbody
                     each correo in correos || []
                       tr(data-toggle="modal", data-target="#correo-modal")
-                        td= correo.destinatario
+                        td= correo.remitente
                         td= correo.asunto
                         td= correo.fecha
                         td= correo.hora 
