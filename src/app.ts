@@ -5,12 +5,12 @@ import login from './routes/login';
 import send from './routes/send';
 import { Correo } from './back/Correo/Correo';
 import manejador from './ManejadorCuentas';
+import session, { SessionData } from 'express-session';
 
 const app = express();
 const PORT = 3000;
 
 const cookieParser = require("cookie-parser");
-const session = require('express-session');
 
 
 // Configuración de Express
@@ -23,14 +23,9 @@ app.use(express.json());
 app.use("/login", login );
 app.use('/inbox', inbox);
 app.use('/send', send);
-//confuguracoin de no se que, de la seciones ya no tengo idea lo que estoy tocando
 
-declare module 'express-session' {
-  interface SessionData {
-     email: string ;
-     password: string ;
-     autorizacion: boolean;
- }
+interface CustomSession extends SessionData {
+  email?: string;
 }
   
 // Configuración de cookieParse
@@ -39,7 +34,7 @@ app.use(cookieParser("nashe es el secreto"));
 app.use(session({
   secret: "nashe es el secreto",
   resave: true,
-  saveUnitialized: true,
+  saveUninitialized: true,
   cookie: {
     sameSite: "strict",maxAge: 10 * 60 * 1000, // Duración máxima de la cookie en milisegundos (10 minutos)
   }
