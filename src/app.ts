@@ -6,6 +6,7 @@ import send from './routes/send';
 import { Correo } from './back/Correo/Correo';
 import manejador from './ManejadorCuentas';
 import session, { SessionData } from 'express-session';
+import resgistro from "./routes/Registro"
 
 const app = express();
 const PORT = 3000;
@@ -23,7 +24,7 @@ app.use(express.json());
 app.use("/login", login );
 app.use('/inbox', inbox);
 app.use('/send', send);
-
+app.use('/register', resgistro)
 interface CustomSession extends SessionData {
   email?: string;
 }
@@ -45,8 +46,8 @@ app.use(session({
 app.post('/enviar-correo', (req: Request, res: Response) => {
   const { destinatario, asunto, mensaje } = req.body;
   const currentPage = req.url;
-
-  const NuevoCorreo = new Correo(asunto, mensaje, 'andresbriend@anashe.ashe');
+  var emisor = req.cookies.email;
+  const NuevoCorreo = new Correo(asunto, mensaje, emisor);
   NuevoCorreo.agregarPara(destinatario);
 
   manejador.enviarCorreo(NuevoCorreo);
@@ -74,11 +75,6 @@ app.get('/contacts', (req, res) => {
 app.get('/newcontact', (req, res) => {
   res.render('newcontact');
 });
-
-app.get('/register', (req, res) => {
-  res.render('register');
-});
-
 // Configuración del servidor
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

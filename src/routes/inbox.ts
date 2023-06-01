@@ -1,12 +1,30 @@
-import express, { Router } from 'express';
 import manejador from '../ManejadorCuentas';
+import express from 'express';
 
 const router = express.Router();
 
-router.get('/', (_req, res) => {
-  const correos = manejador.getManejador().get('andresbriend@anashe.ashe')?.bandeja.getBandejaDeEntrada().map(correo => {
-  });
+const cookieParser = require("cookie-parser");
+
+router.use(cookieParser());
+
+router.get('/', (req, res) => {
+
+  const cuentaEmail = req.cookies.email;
+  console.log(cuentaEmail);
+  const bandejaDeEntrada = manejador.getManejador().get(cuentaEmail)?.bandeja.getBandejaDeEntrada();
+  const correos = bandejaDeEntrada ? bandejaDeEntrada.map(correo =>{
+    return {
+      remitente: correo.getEmisor(),
+      asunto: correo.getAsunto(),
+      contenido: correo.getContenido(),
+      fecha: correo.getFecha(),
+      hora: correo.getHora(),
+      id: correo.generateId(),
+    };
+  }) : [];
+
   res.render('inbox', { correos: correos });
 });
 
 export default router;
+
