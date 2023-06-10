@@ -15,7 +15,7 @@ export class GestorContactos implements IBusquedas {
     this.ListaContactos.set(email,crearContacto);
 }
 
-  public EliminarContacto(email: string){
+  public eliminarContacto(email: string){
     this.ListaContactos.delete(email);
   }
   

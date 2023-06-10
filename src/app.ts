@@ -9,7 +9,7 @@ import session, { SessionData } from 'express-session';
 import resgistro from "./routes/Registro";
 import favoritos from "./routes/favorites";
 import contacts from "./routes/contacts"
-
+import newcontact from "./routes/newcontact"
 
 const app = express();
 const PORT = 3000;
@@ -26,10 +26,11 @@ app.use(express.json());
 // Configuración de las rutas
 app.use("/login", login );
 app.use('/inbox', inbox);
-app.use('/send', send); 
+app.use('/send', send);
 app.use('/register', resgistro)
 app.use('/favorites', favoritos);
 app.use('/contacts', contacts);
+app.use('/newcontact', newcontact);
   
 // Configuración de cookieParse
 app.use(cookieParser("nashe es el secreto"));
@@ -61,15 +62,36 @@ app.post('/enviar-correo', (req: Request, res: Response) => {
 
   res.redirect('/inbox');
 });
+app.post('/eliminar-contacto', (req, res) => {
+
+  console.log("entre al metodo post de eliminar")
+  let cuentaEmail = req.cookies.email;
+  let emailEliminar = req.body.email; // Obtener el correo electrónico del contacto a eliminar desde el cuerpo de la solicitud
+
+  // Lógica para eliminar el contacto con el correo electrónico proporcionado
+  let exito = manejador.getManejador().get(cuentaEmail)?.contactos.eliminarContacto(emailEliminar);
+
+  if (exito) {
+    // Contacto eliminado correctamente
+    res.redirect('/'); // Redirigir al listado de contactos o a la página principal
+  } else {
+    // No se pudo eliminar el contacto
+    res.status(500).send('Error al eliminar el contacto');
+  }
+});
 
 app.post('/eliminar-contacto', (req, res) => {
-  const cuentaEmail = req.cookies.email;
-  const contactoId = req.body.contactoId;
+  let cuentaEmail = req.cookies.email;
+  let { name, apellido, email, relacion } = req.body;
 
-  // Eliminar el contacto utilizando el ID recibido
-  manejador.getManejador().get(cuentaEmail)?.contactos.EliminarContacto(contactoId);
+  let manejadorCuentas = manejador.getManejador();
+  let cuenta = manejadorCuentas.get(cuentaEmail);
+  if (cuenta) {
+    cuenta.contactos.eliminarContacto(email); // Eliminar el contacto utilizando el email como identificador
+    console.log("Contacto eliminado:", name, apellido, email, relacion);
+  }
 
-  res.redirect('/contacts'); // Redirigir de vuelta a la página de contactos
+  res.redirect('/contacts');
 });
 
 app.get('/changeuser', (req: Request, res: Response) => {

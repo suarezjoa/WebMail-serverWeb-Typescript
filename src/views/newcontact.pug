@@ -8,8 +8,8 @@ html(lang="en")
     div.container-fluid.my-5
       div.row.justify-content-center
         div.col-12.col-md-8.col-lg-6
-          form(action="/register", method="POST")
-            h2#tituloLogin.mb-4.mt-4.text-center Registro
+          form(action="/newcontact", method="POST")
+            h2#tituloLogin.mb-4.mt-4.text-center Nuevo contacto
             div.form-group
               div.form-group
                 label#tituloLogin1(for="name") Nombre 
@@ -21,13 +21,10 @@ html(lang="en")
               label(for="email", id="tituloLogin1") Correo Electrónico
               input.form-control#email(type="email", placeholder="Ingrese su correo electrónico", name="email", required)
             div.form-group
-              label(for="password", id="tituloLogin1") Contraseña
-              input.form-control#password(type="password", placeholder="Ingrese su contraseña", name="password", required)
-            div.form-group
-              label(for="confirmPassword", id="tituloLogin1") Confirmar Contraseña
-              input#confirmPassword.form-control(type="password", placeholder="Confirme su contraseña", required)
+              label(for="password", id="tituloLogin1") Relacion 
+              input.form-control#password(type="relacion", placeholder="Ingrese su contraseña", name="relacion", required)
             div(style="text-align: center;")
-              button.btn.custom-btn2.btn-lg.mt-4.btn-animations(type="submit") Registrarse
+              button.btn.custom-btn2.btn-lg.mt-4.btn-animations(type="submit") Añadir
         div.mt-5.text-center
           button.btn.btn-sm.custom-btn.btn-animations(onclick="window.location.href='/contacts'") Volver
           button.btn.btn-sm.custom-btn.btn-animations(onclick="window.location.href='/inbox'") Inicio

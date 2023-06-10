@@ -1,23 +1,26 @@
 import express from 'express';
 import manejador from '../ManejadorCuentas';
 
-const routerRegistro = express.Router();
+const nuevocontacto = express.Router();
 
-routerRegistro.get('/', (_req, res) => {
+const cookieParser = require("cookie-parser");
+
+nuevocontacto.use(cookieParser());
+
+nuevocontacto.get('/', (_req, res) => {
     res.render("newcontact");
 });
 
-routerRegistro.post('/', (req, res) => {
+nuevocontacto.post('/', (req, res) => {
 
-    const { email, password, name, apellido} = req.body;
-    
-    manejador.CrearCuenta(email, password, name, apellido);
-    console.log(email,password,name , apellido);
-    if(manejador.getManejador().has(email)){
-        res.redirect("/login");
-    }else{
-        res.render("Usuario no creado error 402");
-    }
-});
+    let cuentaEmail = req.cookies.email;
 
-export default routerRegistro;
+    let { name, apellido, email, relacion } = req.body;
+
+    manejador.getManejador().get(cuentaEmail)?.contactos.agregarContacto(name, apellido, email, relacion);
+
+
+    res.redirect('/contacts'); // Redirecciona a la página de contactos después de eliminar el contacto
+  });
+
+export default nuevocontacto;
