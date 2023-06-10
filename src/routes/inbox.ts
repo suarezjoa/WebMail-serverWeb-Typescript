@@ -9,10 +9,10 @@ router.use(cookieParser());
 
 router.get('/', (req, res) => {
 
-  const cuentaEmail = req.cookies.email;
+  let cuentaEmail = req.cookies.email;
   console.log(cuentaEmail);
-  const bandejaDeEntrada = manejador.getManejador().get(cuentaEmail)?.bandeja.getBandejaDeEntrada();
-  const correos = bandejaDeEntrada ? bandejaDeEntrada.map(correo =>{
+  let bandejaDeEntrada = manejador.getManejador().get(cuentaEmail)?.bandeja.getBandejaDeEntrada();
+  let correos = bandejaDeEntrada ? bandejaDeEntrada.map(correo =>{
     return {
       remitente: correo.getEmisor(),
       asunto: correo.getAsunto(),

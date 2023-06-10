@@ -9,11 +9,10 @@ routerRegistro.get('/', (_req, res) => {
 
 routerRegistro.post('/', (req, res) => {
 
-    console.log("estoy aca");
-    const { email, password, name } = req.body;
-    console.log("estoy aca");
-    manejador.CrearCuenta(email, password, name, "apellido");
-    console.log(email,password,name , "apellido");
+    const { email, password, name, apellido} = req.body;
+    
+    manejador.CrearCuenta(email, password, name, apellido);
+    console.log(email,password,name , apellido);
     if(manejador.getManejador().has(email)){
         res.redirect("/login");
     }else{

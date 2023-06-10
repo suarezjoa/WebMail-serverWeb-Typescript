@@ -25,9 +25,6 @@ app.use("/login", login );
 app.use('/inbox', inbox);
 app.use('/send', send);
 app.use('/register', resgistro)
-interface CustomSession extends SessionData {
-  email?: string;
-}
   
 // Configuración de cookieParse
 app.use(cookieParser("nashe es el secreto"));

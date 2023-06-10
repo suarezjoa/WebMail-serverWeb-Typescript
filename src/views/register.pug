@@ -13,14 +13,18 @@ html(lang="en")
           form(action="/register", method="POST")
             h2#tituloLogin.mb-4.mt-4.text-center Registro
             div.form-group
-              label(for="name", id="tituloLogin1") Nombre y Apellido
-              input#name.form-control(type="text", placeholder="Ingrese su nombre y apellido", required)
-            div.form-group
+              div.form-group
+                label#tituloLogin1(for="name") Nombre 
+                input.form-control#email(type="name", placeholder="Ingrese su nombre", name="name", required)
+              div.form-group
+                label#tituloLogin1(for="apellido") Apellido 
+                input.form-control#email(type="apellido", placeholder="Ingrese su apellido", name="apellido", required)
+              div.form-group
               label(for="email", id="tituloLogin1") Correo Electrónico
-              input#email.form-control(type="email", placeholder="Ingrese su correo electrónico", required)
+              input.form-control#email(type="email", placeholder="Ingrese su correo electrónico", name="email", required)
             div.form-group
               label(for="password", id="tituloLogin1") Contraseña
-              input#password.form-control(type="password", placeholder="Ingrese su contraseña", required)
+              input.form-control#password(type="password", placeholder="Ingrese su contraseña", name="password", required)
             div.form-group
               label(for="confirmPassword", id="tituloLogin1") Confirmar Contraseña
               input#confirmPassword.form-control(type="password", placeholder="Confirme su contraseña", required)
