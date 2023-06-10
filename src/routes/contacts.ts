@@ -17,7 +17,6 @@ contactosrouter.get('/', (req, res) => {
 
   let contactosDeUsuario = manejador.getManejador().get(cuentaEmail)?.contactos.getContactos();
 
-  
 
   let contactos = contactosDeUsuario ? Array.from(contactosDeUsuario.values()).map(contactos => {
     return {

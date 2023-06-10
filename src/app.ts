@@ -26,7 +26,7 @@ app.use(express.json());
 // Configuración de las rutas
 app.use("/login", login );
 app.use('/inbox', inbox);
-app.use('/send', send);
+app.use('/send', send); 
 app.use('/register', resgistro)
 app.use('/favorites', favoritos);
 app.use('/contacts', contacts);

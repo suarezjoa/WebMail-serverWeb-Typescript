@@ -5,17 +5,29 @@ html(lang="en")
     include head
   body
     include navbar
-    div.container.mt-5
-      h2#tituloLogin.mb-4.mt-4.text-center Nuevo contacto
-      form
-        div.mb-3
-          label.form-label(for="inputNewPassword", class="form-title") Nombre y Apellido
-          input#inputNewPassword.form-control(type="text", placeholder="Ingrese el nombre y apellido", required)
-        div.mb-3
-          label.form-label(for="inputConfirmPassword", class="form-title") Correo electrónico
-          input#inputConfirmPassword.form-control(type="email", placeholder="Ingrese el correo electrónico", required)
-        div.d-grid
-          button.btn.btn-primary1.btn-animations(type="submit") Guardar contacto
+    div.container-fluid.my-5
+      div.row.justify-content-center
+        div.col-12.col-md-8.col-lg-6
+          form(action="/register", method="POST")
+            h2#tituloLogin.mb-4.mt-4.text-center Registro
+            div.form-group
+              div.form-group
+                label#tituloLogin1(for="name") Nombre 
+                input.form-control#email(type="name", placeholder="Ingrese su nombre", name="name", required)
+              div.form-group
+                label#tituloLogin1(for="apellido") Apellido 
+                input.form-control#email(type="apellido", placeholder="Ingrese su apellido", name="apellido", required)
+              div.form-group
+              label(for="email", id="tituloLogin1") Correo Electrónico
+              input.form-control#email(type="email", placeholder="Ingrese su correo electrónico", name="email", required)
+            div.form-group
+              label(for="password", id="tituloLogin1") Contraseña
+              input.form-control#password(type="password", placeholder="Ingrese su contraseña", name="password", required)
+            div.form-group
+              label(for="confirmPassword", id="tituloLogin1") Confirmar Contraseña
+              input#confirmPassword.form-control(type="password", placeholder="Confirme su contraseña", required)
+            div(style="text-align: center;")
+              button.btn.custom-btn2.btn-lg.mt-4.btn-animations(type="submit") Registrarse
         div.mt-5.text-center
           button.btn.btn-sm.custom-btn.btn-animations(onclick="window.location.href='/contacts'") Volver
           button.btn.btn-sm.custom-btn.btn-animations(onclick="window.location.href='/inbox'") Inicio
