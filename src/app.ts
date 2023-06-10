@@ -41,10 +41,15 @@ app.use(session({
 
 // Ruta para enviar correo
 app.post('/enviar-correo', (req: Request, res: Response) => {
+  
   const { destinatario, asunto, mensaje } = req.body;
+  
   const currentPage = req.url;
-  var emisor = req.cookies.email;
+
+  let emisor = req.cookies.email;
+
   const NuevoCorreo = new Correo(asunto, mensaje, emisor);
+
   NuevoCorreo.agregarPara(destinatario);
 
   manejador.enviarCorreo(NuevoCorreo);

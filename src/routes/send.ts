@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
   let cuentaEmail = req.cookies.email;
 
   let bandejaDeEnvios = manejador.getManejador().get(cuentaEmail)?.bandeja.getBandejaDeEnvios();
+  
   let correos = bandejaDeEnvios ? bandejaDeEnvios.map(correo =>{
     return {
       destinatario: Array.from(correo.getPara()).join(','),
