@@ -80,19 +80,22 @@ app.post('/eliminar-contacto', (req, res) => {
   }
 });
 
-app.post('/eliminar-contacto', (req, res) => {
+app.post('/eliminar-contacto/:email', (req, res) => {
   let cuentaEmail = req.cookies.email;
-  let { name, apellido, email, relacion } = req.body;
+  let emailEliminar = req.params.email; // Obtener el correo electrónico del contacto a eliminar desde los parámetros de la URL
 
-  let manejadorCuentas = manejador.getManejador();
-  let cuenta = manejadorCuentas.get(cuentaEmail);
-  if (cuenta) {
-    cuenta.contactos.eliminarContacto(email); // Eliminar el contacto utilizando el email como identificador
-    console.log("Contacto eliminado:", name, apellido, email, relacion);
+  // Lógica para eliminar el contacto con el correo electrónico proporcionado
+  let exito = manejador.getManejador().get(cuentaEmail)?.contactos.eliminarContacto(emailEliminar);
+
+  if (exito) {
+    // Contacto eliminado correctamente
+    res.redirect('/'); // Redirigir al listado de contactos o a la página principal
+  } else {
+    // No se pudo eliminar el contacto
+    res.status(500).send('Error al eliminar el contacto');
   }
-
-  res.redirect('/contacts');
 });
+
 
 app.get('/changeuser', (req: Request, res: Response) => {
   res.render('changeuser');
