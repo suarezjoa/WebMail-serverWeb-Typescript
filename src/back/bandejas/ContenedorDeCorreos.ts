@@ -10,8 +10,9 @@ export class ContenedorDeCorreos implements IStrategyBandejas, IFiltros {
     public todosLosCorreos: Correo[] = [];
     public bandejaDeEnvios: Correo[] = [];
     public bandejaDeEntrada: Correo[] = []; 
+    public bandejaDeFavorito: Correo [] = [];
     private ObservadorCuenta: IObserver | null = null;
-    private Estadonotificacion: string = "asd";
+    private Estadonotificacion: string = "";
 
     constructor() {
     }
@@ -72,7 +73,16 @@ export class ContenedorDeCorreos implements IStrategyBandejas, IFiltros {
       return this.bandejaDeEntrada;
 
     }
+    public getBandejaDeFavoritos(): Correo[] {
 
+      return this.bandejaDeFavorito;
+
+    }
+    public agregarFavorito(correoFav: Correo): void {
+
+      this.bandejaDeFavorito.push(correoFav)
+
+    }
     public getBandejaDeEnvios() : Correo [] {
 
       return this.bandejaDeEnvios;

@@ -8,11 +8,13 @@ export abstract class CorreoBase {
     public fecha: Date;
     public hora: string;
     public id: string;
+    public favorito: boolean;
 
     constructor(asunto: string, contenido: string, emisor: string) {
         this.asunto = asunto;
         this.contenido = contenido;
         this.emisor = emisor;
+        this.favorito = false;
         this.fecha = new Date();
         this.hora = this.getFormattedHour();
         this.id = this.generateId();
@@ -63,5 +65,12 @@ export abstract class CorreoBase {
         const hash = createHash('sha256');
         hash.update(dataToHash);
         return hash.digest('hex');
+    }
+    public setFavorito(): void {
+        this.favorito = true;
+    }
+
+    public getFavorto(): boolean {
+        return this.favorito;
     }
 }

@@ -23,26 +23,18 @@ html(lang="en")
     div.container.mt-5
       h2#tituloLogin.mb-4.mt-4.text-center Contactos
       button.btn.btn-success.mb-3.btn-animations(onclick="window.location.href='/newcontact';") Agregar un nuevo contacto
-      .contact
-        h4 Messi
-        p lionelmessi@gmail.com
-        div.btn-group.mt-1
-          button.btn.btn-primary1.btn-animations(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
-          button.btn.btn-danger.btn-animations(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
-      .contact
-        h4 Milei
-        p javierleonmilei@gmail.com
-        div.btn-group.mt-1
-          button.btn.btn-primary1.btn-animations(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
-          button.btn.btn-danger.btn-animations(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
-      .contact
-        h4 WillyRex
-        p vegettaywilly@gmail.com
-        div.btn-group.mt-1
-          button.btn.btn-primary1.btn-animations(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
-          button.btn.btn-danger.btn-animations(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal") Eliminar Contacto
-      .mt-5.text-center
-        button.btn.btn-sm.custom-btn.btn-animations(type="button", onclick="window.location.href='#'") Inicio
+      each contacto in contactos || []
+        .contact
+          h4= contacto.nombre
+          p= contacto.apellido
+          p= contacto.email
+          p= contacto.relacion
+          div.btn-group.mt-1
+            button.btn.btn-primary1.btn-animations(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
+            button.btn.btn-danger.btn-animations(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal", data-email=contacto.email) Eliminar Contacto
+    div.mt-5.text-center
+      button.btn.btn-sm.custom-btn.btn-animations(type="button", onclick="window.location.href='#'") Inicio
+    
     div.modal.fade#confirmarEliminarModal(tabindex="-1", aria-labelledby="confirmarEliminarModalLabel", aria-hidden="true")
       div.modal-dialog.modal-dialog-centered
         div.modal-content
@@ -53,5 +45,7 @@ html(lang="en")
             p.confirmation-message ¿Estás seguro que deseas eliminar este contacto?
           div.modal-footer
             button.btn.btn-primary2(type="button", data-bs-dismiss="modal") Cancelar
-            button.btn.btn-primary3(type="button", data-bs-dismiss="modal") Eliminar
+            form(action="/eliminar-contacto", method="post")
+              input(type="hidden", name="email", id="eliminarEmail")
+              button.btn.btn-primary3(type="submit", data-bs-dismiss="modal") Eliminar
     script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" type="module")

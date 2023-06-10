@@ -5,15 +5,9 @@ import { Contacto } from "./Contacto";
 
 export class GestorContactos implements IBusquedas {
   private ListaContactos: Map<string, Contacto>;
-  private propietario: Usuario;
 
-  constructor(propietario: Usuario) {
-    this.propietario = propietario;
+  constructor() {
     this.ListaContactos =  new Map<string, Contacto>();
-  }
-
-  public getPropietario(): Usuario {
-    return this.propietario;
   }
 
   public agregarContacto(nombre: string, apellido: string,email: string,relacion: string): void {

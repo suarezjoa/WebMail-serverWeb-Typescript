@@ -6,7 +6,10 @@ import send from './routes/send';
 import { Correo } from './back/Correo/Correo';
 import manejador from './ManejadorCuentas';
 import session, { SessionData } from 'express-session';
-import resgistro from "./routes/Registro"
+import resgistro from "./routes/Registro";
+import favoritos from "./routes/favorites";
+import contacts from "./routes/contacts"
+
 
 const app = express();
 const PORT = 3000;
@@ -25,6 +28,8 @@ app.use("/login", login );
 app.use('/inbox', inbox);
 app.use('/send', send);
 app.use('/register', resgistro)
+app.use('/favorites', favoritos);
+app.use('/contacts', contacts);
   
 // Configuración de cookieParse
 app.use(cookieParser("nashe es el secreto"));
@@ -55,6 +60,16 @@ app.post('/enviar-correo', (req: Request, res: Response) => {
   manejador.enviarCorreo(NuevoCorreo);
 
   res.redirect('/inbox');
+});
+
+app.post('/eliminar-contacto', (req, res) => {
+  const cuentaEmail = req.cookies.email;
+  const contactoId = req.body.contactoId;
+
+  // Eliminar el contacto utilizando el ID recibido
+  manejador.getManejador().get(cuentaEmail)?.contactos.EliminarContacto(contactoId);
+
+  res.redirect('/contacts'); // Redirigir de vuelta a la página de contactos
 });
 
 app.get('/changeuser', (req: Request, res: Response) => {

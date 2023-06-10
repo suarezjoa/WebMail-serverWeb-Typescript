@@ -1,3 +1,4 @@
+import { GestorContactos } from "./GestorContactos";
 import { IObserver } from "./Interfaces/IObserver";
 import { ContenedorDeCorreos } from './bandejas/ContenedorDeCorreos';
 
@@ -8,6 +9,7 @@ export class Usuario implements IObserver {
     protected contrasenia: string;
     protected Email: string;
     public bandeja: ContenedorDeCorreos = new ContenedorDeCorreos();
+    public contactos: GestorContactos;
 
 
     constructor(nombre: string, apellido: string, Email: string, contrasenia: string) {
@@ -15,6 +17,7 @@ export class Usuario implements IObserver {
         this.contrasenia = contrasenia;
         this.apellido = apellido;
         this.Email = Email;
+        this.contactos = new GestorContactos();
     }
 
     public update(): string  {

@@ -1,8 +1,8 @@
 doctype html
 html(lang="en")
   head
-    title Correos Destacados
-    include head 
+    title Correos Recibidos
+    include head
   body
     include navbar
     div.container-fluid.my-5
@@ -10,16 +10,32 @@ html(lang="en")
         div.col-12.col-lg-1.mb-4
           h2.mb-3.mt-5
           div.btn-group-vertical
-            a.btn.custom-btnRedac.btn-sm.mt-1(href="compose") Redactar
+            a.btn.custom-btnRedac.btn-sm.mt-1(href="#", data-bs-toggle="modal", data-bs-target="#modalRedactar") Redactar
             a.btn.custom-btn.btn-lg.mt-5(href="inbox") Recibidos
             a.btn.custom-btn.btn-lg.mt-1(href="send") Enviados
-            a.btn.custom-btn.btn-lg.mt-1(href="all") Todos
             a.btn.custom-btn.btn-lg.mt-1(href="favorites") Favoritos
-            a.btn.custom-btn.btn-lg.mt-1(href="trash") Papelera
+        div#modalRedactar.modal.fade
+          div.modal-dialog
+            div.modal-content
+              div.modal-header
+                h5.modal-title Redactar correo
+                button.btn-close(data-bs-dismiss="modal", id="CloseModal", aria-label="Close")
+              div.modal-body
+                form(action="/enviar-correo", method="post")
+                  div.mb-3
+                    label.form-label#desti-asun-men(for="recipient") Destinatario:
+                    input.form-control(type="text", id="recipient", name="destinatario", placeholder="Ingrese el destinatario", required)
+                  div.mb-3
+                    label.form-label#desti-asun-men(for="subject") Asunto:
+                    input.form-control(type="text", id="subject", name="asunto", placeholder="Ingrese el asunto", required)
+                  div.mb-3
+                    label.form-label#desti-asun-men(for="message") Mensaje:
+                    textarea.form-control(id="message", name="mensaje", rows="5", placeholder="Ingrese el mensaje", required)
+                  button.btn.btn-primary1.float-end(type="submit") Enviar
         div.col-12.col-lg-11.mt-5
           div.card
             div.card-body
-              h2#titulos.card-title Correos Destacados
+              h2#titulos.card-title Correos Recibidos
               hr
               div.card-text
                 table.table.table-hover
@@ -28,26 +44,30 @@ html(lang="en")
                       th(scope="col") De
                       th(scope="col") Asunto
                       th(scope="col") Fecha
+                      th(scope="col") Hora
                   tbody
-                    tr(data-toggle="modal", data-target="#correo1-modal")
-                      td juancitoperez@hotmail.com
-                      td Pagame amigo
-                      td 2023-05-04
-                      td(style="text-align: right;")
-                        button.btn.btn-primary.btn-sm(onclick="window.location.href='/message';", style="margin-right: 10px;") Ver
-                        button.btn.btn-primary.btn-sm(data-toggle="modal", data-target="#correo3-modal", style="margin-left: 10px;") Fav
-                    tr(data-toggle="modal", data-target="#correo2-modal")
-                      td alfonzinricardo@gmail.com
-                      td MILEI 2023
-                      td 2023-05-03
-                      td(style="text-align: right;")
-                        button.btn.btn-primary.btn-sm(onclick="window.location.href='/message';", style="margin-right: 10px;") Ver
-                        button.btn.btn-primary.btn-sm(data-toggle="modal", data-target="#correo3-modal", style="margin-left: 10px;") Fav
-                    tr(data-toggle="modal", data-target="#correo3-modal")
-                      td vegetta777@hotmail.com
-                      td Te dejaste diamantes en el minuto 10
-                      td 2023-05-02
-                      td(style="text-align: right;")
-                        button.btn.btn-primary.btn-sm(onclick="window.location.href='/message';", style="margin-right: 10px;") Ver
-                        button.btn.btn-primary.btn-sm(data-toggle="modal", data-target="#correo3-modal", style="margin-left: 10px;") Fav
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js")
+                    each correo in correos || []
+                      tr(data-toggle="modal", data-target="#correo-modal")
+                        td= correo.remitente
+                        td= correo.asunto
+                        td= correo.fecha
+                        td= correo.hora 
+                        td(style="text-align: right;")
+                          button.btn.btn-primary1.btn-sm.btn-animations(data-bs-toggle="modal", data-bs-target="#correoModal"+correo.id) Ver correo
+                          button.btn.btn-primary1.btn-sm.btn-animations(onclick="marcarFavorito('#{correo.id}')") Marcar favorito
+                          div.modal.fade(id="correoModal"+correo.id)
+                            .modal-dialog
+                              .modal-content
+                                .modal-header
+                                  h5.modal-title.custom-font Ver correo
+                                  button.btn-close(data-bs-dismiss="modal", aria-label="Close")
+                                .modal-body.text-left
+                                  p.custom-font1 Destinatario: #{correo.destinatario}
+                                  p.custom-font1 Asunto: #{correo.asunto}
+                                  p.custom-font1 Fecha: #{correo.fecha} Hora: #{correo.hora}
+                                  p.custom-font1 Contenido: #{correo.contenido}
+                                .modal-footer.d-flex.justify-content-center
+                                  div.text-center
+                                    button.btn.btn-primary1.btn-animations(onclick="window.location.href='/inbox';") Volver
+    
+script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js")
