@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "tsc": "tsc",
-    "start": "node src/app.ts",
+    "start": "node dist/app.js",
     "dev": "ts-node-dev index.js"
   },
   "author": "",
