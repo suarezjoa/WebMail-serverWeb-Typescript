@@ -12,7 +12,10 @@ html(lang="en")
             h5.modal-title Redactar correo
             button.btn-close(data-bs-dismiss="modal", id="CloseModal", aria-label="Close")
           div.modal-body
-            form(id="composeForm", action="/eliminar-contacto", method="post")
+            form(id="composeForm", action="/enviar-correo", method="post")
+                          div.mb-3
+                label.form-label#desti-asun-men(for="email") Email :
+                input.form-control(type="text", id="email", name="email", placeholder="Ingrese el Email", required)
               div.mb-3
                 label.form-label#desti-asun-men(for="subject") Asunto:
                 input.form-control(type="text", id="subject", name="asunto", placeholder="Ingrese el asunto", required)
@@ -34,6 +37,7 @@ html(lang="en")
             button.btn.btn-danger.btn-animations(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal", onclick=`setEliminarEmail('${contacto.email}')`) Eliminar Contacto
     div.mt-5.text-center
       button.btn.btn-sm.custom-btn.btn-animations(type="button", onclick="window.location.href='#'") Inicio
+    
     div.modal.fade#confirmarEliminarModal(tabindex="-1", aria-labelledby="confirmarEliminarModalLabel", aria-hidden="true")
       div.modal-dialog.modal-dialog-centered
         div.modal-content
@@ -44,11 +48,7 @@ html(lang="en")
             p.confirmation-message ¿Estás seguro que deseas eliminar este contacto?
           div.modal-footer
             button.btn.btn-primary2(type="button", data-bs-dismiss="modal") Cancelar
-            form(action="'/eliminar-contacto/:email'", method="post")
+            form(action="/eliminar-contacto", method="post")
               input(type="hidden", name="email", id="eliminarEmail")
               button.btn.btn-primary3(type="submit", data-bs-dismiss="modal") Eliminar
-              script.
-                function setEliminarEmail(email) {
-                  document.getElementById('eliminarEmail').value = email;
-                }
     script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" type="module")

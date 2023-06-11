@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest",
     "tsc": "tsc",
-    "start": "node dist/app.js",
-    "dev": "ts-node-dev src/app.ts"
+    "start": "node src/app.ts",
+    "dev": "ts-node-dev index.js"
   },
   "author": "",
   "license": "ISC",

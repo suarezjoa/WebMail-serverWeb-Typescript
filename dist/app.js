@@ -45,21 +45,7 @@ app.post('/enviar-correo', (req, res) => {
 });
 app.post('/correos/${correo.id}/favorito', funciones_1.marcarCorreoFavorito);
 app.get('/correos/:id/favorito', funciones_1.marcarCorreoFavorito);
-app.post('/eliminar-contacto/:email', (req, res) => {
-    var _a;
-    const cuentaEmail = req.cookies.email;
-    const emailEliminar = req.params.email; // Obtener el correo electrónico del contacto a eliminar desde los parámetros de la URL
-    // Lógica para eliminar el contacto con el correo electrónico proporcionado
-    const exito = (_a = ManejadorCuentas_1.default.getManejador().get(cuentaEmail)) === null || _a === void 0 ? void 0 : _a.contactos.eliminarContacto(emailEliminar);
-    if (exito) {
-        // Contacto eliminado correctamente
-        res.redirect('/'); // Redirigir al listado de contactos o a la página principal
-    }
-    else {
-        // No se pudo eliminar el contacto
-        res.status(500).send('Error al eliminar el contacto');
-    }
-});
+app.post('/eliminar-contacto/:email', funciones_1.eliminarContacto);
 app.get('/changeuser', (req, res) => {
     res.render('changeuser');
 });
