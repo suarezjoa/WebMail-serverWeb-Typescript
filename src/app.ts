@@ -5,12 +5,12 @@ import login from './routes/login';
 import send from './routes/send';
 import { Correo } from './back/Correo/Correo';
 import manejador from './ManejadorCuentas';
-import session, { SessionData } from 'express-session';
 import resgistro from "./routes/Registro";
 import favoritos from "./routes/favorites";
 import contacts from "./routes/contacts"
 import newcontact from "./routes/newcontact"
 import {marcarCorreoFavorito} from "./funciones"
+
 const app = express();
 const PORT = 3000;
 
@@ -34,15 +34,6 @@ app.use('/newcontact', newcontact);
   
 // Configuración de cookieParse
 app.use(cookieParser("nashe es el secreto"));
-// Configuración de sesiones
-app.use(session({
-  secret: "nashe es el secreto",
-  resave: true,
-  saveUninitialized: true,
-  cookie: {
-    sameSite: "strict",maxAge: 10 * 60 * 1000, // Duración máxima de la cookie en milisegundos (10 minutos)
-  }
-}))
 
 
 // Ruta para enviar correo
