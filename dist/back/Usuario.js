@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Usuario = void 0;
+const GestorContactos_1 = require("./GestorContactos");
 const ContenedorDeCorreos_1 = require("./bandejas/ContenedorDeCorreos");
 class Usuario {
     constructor(nombre, apellido, Email, contrasenia) {
@@ -9,6 +10,7 @@ class Usuario {
         this.contrasenia = contrasenia;
         this.apellido = apellido;
         this.Email = Email;
+        this.contactos = new GestorContactos_1.GestorContactos();
     }
     update() {
         return `Nuevo correo de ${this.bandeja.getEstadonotificacion()}`;
@@ -24,6 +26,9 @@ class Usuario {
     }
     setApellido(apellido) {
         this.apellido = apellido;
+    }
+    getContrasenia() {
+        return this.contrasenia;
     }
     getEmail() {
         return this.Email;

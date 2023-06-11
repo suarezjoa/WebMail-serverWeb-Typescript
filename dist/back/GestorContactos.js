@@ -3,18 +3,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.GestorContactos = void 0;
 const Contacto_1 = require("./Contacto");
 class GestorContactos {
-    constructor(propietario) {
-        this.propietario = propietario;
+    constructor() {
         this.ListaContactos = new Map();
-    }
-    getPropietario() {
-        return this.propietario;
     }
     agregarContacto(nombre, apellido, email, relacion) {
         var crearContacto = new Contacto_1.Contacto(nombre, apellido, email, relacion);
         this.ListaContactos.set(email, crearContacto);
     }
-    EliminarContacto(email) {
+    eliminarContacto(email) {
         this.ListaContactos.delete(email);
     }
     obtenerContacto(email) {

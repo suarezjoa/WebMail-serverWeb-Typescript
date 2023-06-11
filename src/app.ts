@@ -12,7 +12,6 @@ import newcontact from "./routes/newcontact"
 import {marcarCorreoFavorito} from "./funciones"
 
 const app = express();
-const PORT = 3000;
 
 const cookieParser = require("cookie-parser");
 
@@ -54,7 +53,7 @@ app.post('/enviar-correo', (req: Request, res: Response) => {
   res.redirect('/inbox');
 });
 
-/*app.post('/correos/${correo.id}/favorito', marcarCorreoFavorito);
+app.post('/correos/${correo.id}/favorito', marcarCorreoFavorito);
 
 app.get('/correos/:id/favorito', marcarCorreoFavorito);
 
@@ -72,7 +71,7 @@ app.post('/eliminar-contacto/:email', (req, res) => {
     // No se pudo eliminar el contacto
     res.status(500).send('Error al eliminar el contacto');
   }
-});*/
+});
 
 
 app.get('/changeuser', (req: Request, res: Response) => {
@@ -95,7 +94,5 @@ app.get('/contacts', (req, res) => {
 app.get('/newcontact', (req, res) => {
   res.render('newcontact');
 });
-// Configuración del servidor
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+
+module.exports = app;

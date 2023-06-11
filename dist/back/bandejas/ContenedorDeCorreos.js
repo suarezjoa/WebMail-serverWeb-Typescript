@@ -7,8 +7,9 @@ class ContenedorDeCorreos {
         this.todosLosCorreos = [];
         this.bandejaDeEnvios = [];
         this.bandejaDeEntrada = [];
+        this.bandejaDeFavorito = [];
         this.ObservadorCuenta = null;
-        this.Estadonotificacion = "asd";
+        this.Estadonotificacion = "";
     }
     agregarObservador(observer) {
         this.ObservadorCuenta = observer;
@@ -45,6 +46,12 @@ class ContenedorDeCorreos {
     }
     getBandejaDeEntrada() {
         return this.bandejaDeEntrada;
+    }
+    getBandejaDeFavoritos() {
+        return this.bandejaDeFavorito;
+    }
+    agregarFavorito(correoFav) {
+        this.bandejaDeFavorito.push(correoFav);
     }
     getBandejaDeEnvios() {
         return this.bandejaDeEnvios;

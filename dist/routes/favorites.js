@@ -11,9 +11,11 @@ router.use(cookieParser());
 router.get('/', (req, res) => {
     var _a;
     const cuentaEmail = req.cookies.email;
-    const bandejaDeEnvios = (_a = ManejadorCuentas_1.default.getManejador().get(cuentaEmail)) === null || _a === void 0 ? void 0 : _a.bandeja.getBandejaDeEnvios();
-    const correos = bandejaDeEnvios ? bandejaDeEnvios.map(correo => {
+    console.log(cuentaEmail);
+    const bandejaDeFAv = (_a = ManejadorCuentas_1.default.getManejador().get(cuentaEmail)) === null || _a === void 0 ? void 0 : _a.bandeja.getBandejaDeFavoritos();
+    const correos = bandejaDeFAv ? bandejaDeFAv.map(correo => {
         return {
+            remitente: correo.getEmisor(),
             destinatario: Array.from(correo.getPara()).join(','),
             asunto: correo.getAsunto(),
             contenido: correo.getContenido(),
@@ -22,6 +24,6 @@ router.get('/', (req, res) => {
             id: correo.generateId(),
         };
     }) : [];
-    res.render('send', { correos: correos });
+    res.render('favorites', { correos: correos });
 });
 exports.default = router;

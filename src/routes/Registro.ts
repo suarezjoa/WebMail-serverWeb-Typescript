@@ -1,5 +1,4 @@
 import express from 'express';
-import {registrarUsuario} from "../funciones"
 import manejador from '../ManejadorCuentas';
 
 
@@ -15,7 +14,7 @@ routerRegistro.post("/", (req, res) => {
     manejador.CrearCuenta(email, password, name, apellido);
 
     if(manejador.getManejador().has(email)){
-        
+
     res.redirect("/login");
 }else{
     res.render("Usuario no creado error 402");
