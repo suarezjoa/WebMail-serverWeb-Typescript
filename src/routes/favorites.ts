@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
   let correos = bandejaDeFAv ? bandejaDeFAv.map(correo =>{
     return {
       remitente: correo.getEmisor(),
+      destinatario: Array.from(correo.getPara()).join(','),
       asunto: correo.getAsunto(),
       contenido: correo.getContenido(),
       fecha: correo.getFecha(),
@@ -25,5 +26,6 @@ router.get('/', (req, res) => {
 
   res.render('favorites', { correos: correos });
 });
+
 
 export default router;

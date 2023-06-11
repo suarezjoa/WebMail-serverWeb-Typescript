@@ -35,13 +35,14 @@ html(lang="en")
         div.col-12.col-lg-11.mt-5
           div.card
             div.card-body
-              h2#titulos.card-title Correos Recibidos
+              h2#titulos.card-title Correos Favoritos 
               hr
               div.card-text
                 table.table.table-hover
                   thead
                     tr
-                      th(scope="col") De
+                      th(scope="col") remitente 
+                      th(scope="col") receptor
                       th(scope="col") Asunto
                       th(scope="col") Fecha
                       th(scope="col") Hora
@@ -49,6 +50,7 @@ html(lang="en")
                     each correo in correos || []
                       tr(data-toggle="modal", data-target="#correo-modal")
                         td= correo.remitente
+                        td= correo.destinatario
                         td= correo.asunto
                         td= correo.fecha
                         td= correo.hora 

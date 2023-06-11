@@ -34,7 +34,6 @@ html(lang="en")
             button.btn.btn-danger.btn-animations(data-bs-toggle="modal", data-bs-target="#confirmarEliminarModal", onclick=`setEliminarEmail('${contacto.email}')`) Eliminar Contacto
     div.mt-5.text-center
       button.btn.btn-sm.custom-btn.btn-animations(type="button", onclick="window.location.href='#'") Inicio
-    
     div.modal.fade#confirmarEliminarModal(tabindex="-1", aria-labelledby="confirmarEliminarModalLabel", aria-hidden="true")
       div.modal-dialog.modal-dialog-centered
         div.modal-content
@@ -45,7 +44,7 @@ html(lang="en")
             p.confirmation-message ¿Estás seguro que deseas eliminar este contacto?
           div.modal-footer
             button.btn.btn-primary2(type="button", data-bs-dismiss="modal") Cancelar
-            form(action="/eliminar-contacto", method="post")
+            form(action="'/eliminar-contacto/:email'", method="post")
               input(type="hidden", name="email", id="eliminarEmail")
               button.btn.btn-primary3(type="submit", data-bs-dismiss="modal") Eliminar
               script.

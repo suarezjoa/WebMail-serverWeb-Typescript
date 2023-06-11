@@ -10,7 +10,7 @@ import resgistro from "./routes/Registro";
 import favoritos from "./routes/favorites";
 import contacts from "./routes/contacts"
 import newcontact from "./routes/newcontact"
-
+import {marcarCorreoFavorito} from "./funciones"
 const app = express();
 const PORT = 3000;
 
@@ -62,23 +62,10 @@ app.post('/enviar-correo', (req: Request, res: Response) => {
 
   res.redirect('/inbox');
 });
-app.post('/eliminar-contacto', (req, res) => {
 
-  console.log("entre al metodo post de eliminar")
-  let cuentaEmail = req.cookies.email;
-  let emailEliminar = req.body.email; // Obtener el correo electrónico del contacto a eliminar desde el cuerpo de la solicitud
+app.post('/correos/${correo.id}/favorito', marcarCorreoFavorito);
 
-  // Lógica para eliminar el contacto con el correo electrónico proporcionado
-  let exito = manejador.getManejador().get(cuentaEmail)?.contactos.eliminarContacto(emailEliminar);
-
-  if (exito) {
-    // Contacto eliminado correctamente
-    res.redirect('/'); // Redirigir al listado de contactos o a la página principal
-  } else {
-    // No se pudo eliminar el contacto
-    res.status(500).send('Error al eliminar el contacto');
-  }
-});
+app.get('/correos/:id/favorito', marcarCorreoFavorito);
 
 app.post('/eliminar-contacto/:email', (req, res) => {
   let cuentaEmail = req.cookies.email;
