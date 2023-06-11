@@ -20,7 +20,6 @@ routerLogin.post('/', (req, res) => {
     });
     res.redirect('/inbox');
   } else {
-    res.clearCookie('email');
     res.render('login', { error: 'Los datos ingresados no son correctos' });
   }
 });

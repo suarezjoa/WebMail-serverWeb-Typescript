@@ -27,10 +27,10 @@ export const marcarCorreoFavorito = async (req: Request, res: Response) => {
 };
 export const registrarUsuario = async (req: Request, res: Response) => {
 
-    let { email, password, name, apellido} = req.body;
+    const { email, password, name, apellido} = req.body;
     
     manejador.CrearCuenta(email, password, name, apellido);
-    console.log(email,password,name , apellido);
+
     if(manejador.getManejador().has(email)){
         res.redirect("/login");
     }else{

@@ -8,11 +8,11 @@ const cookieParser = require("cookie-parser");
 contactosrouter.use(cookieParser());
 
 contactosrouter.get('/', (req, res) => {
-  let cuentaEmail = req.cookies.email;
+  const cuentaEmail = req.cookies.email;
 
-  let contactosDeUsuario = manejador.getManejador().get(cuentaEmail)?.contactos.getContactos();
+  const contactosDeUsuario = manejador.getManejador().get(cuentaEmail)?.contactos.getContactos();
 
-  let contactos = contactosDeUsuario
+  const contactos = contactosDeUsuario
     ? Array.from(contactosDeUsuario.values()).map((contacto) => {
         return {
           nombre: contacto.getNombre(),

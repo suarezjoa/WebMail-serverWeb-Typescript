@@ -52,7 +52,7 @@ app.post('/enviar-correo', (req: Request, res: Response) => {
   
   const currentPage = req.url;
 
-  let emisor = req.cookies.email;
+  const emisor = req.cookies.email;
 
   const NuevoCorreo = new Correo(asunto, mensaje, emisor);
 
@@ -68,11 +68,11 @@ app.post('/correos/${correo.id}/favorito', marcarCorreoFavorito);
 app.get('/correos/:id/favorito', marcarCorreoFavorito);
 
 app.post('/eliminar-contacto/:email', (req, res) => {
-  let cuentaEmail = req.cookies.email;
-  let emailEliminar = req.params.email; // Obtener el correo electrónico del contacto a eliminar desde los parámetros de la URL
+  const cuentaEmail = req.cookies.email;
+  const emailEliminar = req.params.email; // Obtener el correo electrónico del contacto a eliminar desde los parámetros de la URL
 
   // Lógica para eliminar el contacto con el correo electrónico proporcionado
-  let exito = manejador.getManejador().get(cuentaEmail)?.contactos.eliminarContacto(emailEliminar);
+  const exito = manejador.getManejador().get(cuentaEmail)?.contactos.eliminarContacto(emailEliminar);
 
   if (exito) {
     // Contacto eliminado correctamente
