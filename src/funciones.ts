@@ -5,12 +5,11 @@ const cookieParser = require("cookie-parser");
 
 export const marcarCorreoFavorito = async (req: Request, res: Response) => {
     
-    let email = req.cookies.email;
+  const email = req.cookies.email;
 
   const correoId = req.params.id;
 
-  let todosLosCorreos = manejador.getManejador().get(email)?.bandeja?.getTodosLosCorreos();
-  try {
+  const todosLosCorreos = manejador.getManejador().get(email)?.bandeja?.getTodosLosCorreos();
     const correo = todosLosCorreos?.find((correo) => correo.id === correoId)
 
     if (!correo) {
@@ -19,11 +18,6 @@ export const marcarCorreoFavorito = async (req: Request, res: Response) => {
     // Cambia el estado de favorito
     correo.favorito = !correo.favorito;
     await manejador.getManejador().get(email)?.bandeja.agregarFavorito(correo);
-
-  } catch (error) {
-    return res.status(500).json({ mensaje: 'Error al marcar el correo como favorito' });
-  }
-  
 };
 export const registrarUsuario = async (req: Request, res: Response) => {
 
