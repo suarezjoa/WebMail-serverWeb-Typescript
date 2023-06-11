@@ -54,7 +54,6 @@ html(lang="en")
                         td= correo.hora 
                         td(style="text-align: right;")
                           button.btn.btn-primary1.btn-sm.btn-animations(data-bs-toggle="modal", data-bs-target="#correoModal"+correo.id) Ver correo
-                          a.btn.btn-primary1.btn-sm.btn-animations(href=`/correos/${correo.id}/favorito`, class='marcar-favorito') Marcar como favorito
                           div.modal.fade(id="correoModal"+correo.id)
                             .modal-dialog
                               .modal-content
