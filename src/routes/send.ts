@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
   
   const correos = bandejaDeEnvios ? bandejaDeEnvios.map(correo =>{
     return {
-      destinatario: Array.from(correo.getPara()).join(','),
+      destinatario: Array.from(correo.getPara()).join('-'),
       asunto: correo.getAsunto(),
       contenido: correo.getContenido(),
       fecha: correo.getFecha(),
