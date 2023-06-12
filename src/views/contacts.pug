@@ -26,12 +26,17 @@ html(lang="en")
     div.container.mt-5
       h2#tituloLogin.mb-4.mt-4.text-center Contactos
       button.btn.btn-success.mb-3.btn-animations(onclick="window.location.href='/newcontact';") Agregar un nuevo contacto
+
       each contacto in contactos || []
         .contact
-          h4= contacto.nombre
-          p= contacto.apellido
-          p= contacto.email
-          p= contacto.relacion
+          p Nombre: #{contacto.nombre}
+          p Apellido: #{contacto.apellido}
+          p Email: #{contacto.email}
+          p Relacion: #{contacto.relacion}
           div.btn-group.mt-1
             button.btn.btn-primary1.btn-animations(data-bs-toggle="modal", data-bs-target="#modalRedactar") Enviar un correo
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" type="module")
+
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" type="module")
+
+
+

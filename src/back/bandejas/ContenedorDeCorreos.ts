@@ -88,6 +88,12 @@ export class ContenedorDeCorreos implements IStrategyBandejas, IFiltros {
       return this.bandejaDeEnvios;
 
     }
+    
+    public eliminarCorreoFavoritos(Correo: Correo): void{
+
+      this.bandejaDeFavorito.splice(this.bandejaDeFavorito.indexOf(Correo),1);
+
+    }
 
     public mostrarCorreos(): string {
       let imprimir: string = "";
