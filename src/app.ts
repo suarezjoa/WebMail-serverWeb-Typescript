@@ -13,8 +13,6 @@ import {marcarCorreoFavorito,eliminarContacto} from "./funciones"
 
 const app = express();
 
-const port = process.env.port || 3000 ;
-
 
 const cookieParser = require("cookie-parser");
 
@@ -36,6 +34,9 @@ app.use('/newcontact', newcontact);
   
 // Configuración de cookieParse
 app.use(cookieParser("nashe es el secreto"));
+
+
+
 
 
 // Ruta para enviar correo
@@ -84,8 +85,6 @@ app.get('/newcontact', (req, res) => {
   res.render('newcontact');
 });
 
-
-app.listen(port)
 console.log("listen port ${port}")
 
 
