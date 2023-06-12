@@ -14,6 +14,14 @@
   color: white !important;
 }
 
+.person-icon {
+  color: rgb(255, 255, 255);
+}
+
+.person-icon:hover {
+  color: #fff;
+}
+
 span.mx-3.text-secondary {
   color: white !important;
 }
