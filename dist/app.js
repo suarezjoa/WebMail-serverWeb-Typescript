@@ -16,6 +16,7 @@ const contacts_1 = __importDefault(require("./routes/contacts"));
 const newcontact_1 = __importDefault(require("./routes/newcontact"));
 const funciones_1 = require("./funciones");
 const app = (0, express_1.default)();
+const port = process.env.port || 3000;
 const cookieParser = require("cookie-parser");
 // Configuración de Express
 app.set('views', path_1.default.join(__dirname, 'views'));
@@ -61,4 +62,6 @@ app.get('/contacts', (req, res) => {
 app.get('/newcontact', (req, res) => {
     res.render('newcontact');
 });
+app.listen(port);
+console.log("listen port ${port}");
 module.exports = app;

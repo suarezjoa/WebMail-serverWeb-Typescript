@@ -13,24 +13,13 @@ export const marcarCorreoFavorito = async (req: Request, res: Response) => {
     const correo = todosLosCorreos?.find((correo) => correo.id === correoId)
 
     if (!correo) {
-      return res.status(404).json({ mensaje: 'Correo no encontrado' });
+      return res.redirect("/favorites")
     }
     // Cambia el estado de favorito
     correo.favorito = !correo.favorito;
     await manejador.getManejador().get(email)?.bandeja.agregarFavorito(correo);
-};
-export const registrarUsuario = async (req: Request, res: Response) => {
-
-    const { email, password, name, apellido} = req.body;
     
-    manejador.CrearCuenta(email, password, name, apellido);
-
-    if(manejador.getManejador().has(email)){
-        res.redirect("/login");
-    }else{
-        res.render("Usuario no creado error 402");
-    }
-  
+    res.redirect("/favorites")
 };
 export const eliminarContacto = async (req: Request, res: Response) => {
  
