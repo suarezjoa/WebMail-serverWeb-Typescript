@@ -41,21 +41,24 @@ const puesto = 3000
 
 // Ruta para enviar correo
 app.post('/enviar-correo', (req: Request, res: Response) => {
-  
   const { destinatario, asunto, mensaje } = req.body;
-  
-  const currentPage = req.url;
 
+  const currentPage = req.url;
   const emisor = req.cookies.email;
 
-  const NuevoCorreo = new Correo(asunto, mensaje, emisor);
+  const nuevoCorreo = new Correo(asunto, mensaje, emisor);
 
-  NuevoCorreo.agregarPara(destinatario);
+  const destinatariosArray: string[] = destinatario.split('-');
+  destinatariosArray.forEach((destinatario: string) => {
+    nuevoCorreo.agregarPara(destinatario);
+  });
 
-  manejador.enviarCorreo(NuevoCorreo);
+  manejador.enviarCorreo(nuevoCorreo);
 
   res.redirect('/inbox');
 });
+
+
 
 app.post('/correos/${correo.id}/favorito', marcarCorreoFavorito);
 
