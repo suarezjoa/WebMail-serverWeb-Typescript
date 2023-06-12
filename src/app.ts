@@ -38,9 +38,6 @@ app.use('/newcontact', newcontact);
 app.use(cookieParser("nashe es el secreto"));
 
 
-
-
-
 // Ruta para enviar correo
 app.post('/enviar-correo', (req: Request, res: Response) => {
   
