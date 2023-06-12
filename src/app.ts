@@ -13,7 +13,6 @@ import {marcarCorreoFavorito,eliminarContacto} from "./funciones"
 
 const app = express();
 
-
 const cookieParser = require("cookie-parser");
 
 
