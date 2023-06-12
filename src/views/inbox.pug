@@ -23,7 +23,7 @@ html(lang="en")
               div.modal-body
                 form(action="/enviar-correo", method="post")
                   div.mb-3
-                    label.form-label#desti-asun-men(for="recipient") Destinatario:
+                    label.form-label(for="recipient", id="desti-asun-men") Destinatario:
                     input.form-control(type="text", id="recipient", name="destinatario", placeholder="Ingrese el destinatario", required)
                   div.mb-3
                     label.form-label#desti-asun-men(for="subject") Asunto:

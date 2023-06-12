@@ -35,7 +35,7 @@ app.use('/newcontact', newcontact);
 // Configuración de cookieParse
 app.use(cookieParser("nashe es el secreto"));
 
-
+const puesto = 3000
 
 
 
@@ -87,5 +87,5 @@ app.get('/newcontact', (req, res) => {
 
 console.log("listen port ${port}")
 
-
+app.listen(puesto)
 module.exports = app;
