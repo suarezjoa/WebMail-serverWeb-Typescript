@@ -38,35 +38,37 @@ html(lang="en")
               h2#titulos.card-title Correos Enviados
               hr
               div.card-text
-                table.table.table-hover
-                  thead
-                    tr
-                      th(scope="col") Para
-                      th(scope="col") Asunto
-                      th(scope="col") Fecha
-                      th(scope="col") Hora
-                  tbody
-                    each correo in correos || []
+                div.table-responsive
+                  table.table.table-hover
+                    thead
                       tr
-                        td= correo.destinatario
-                        td= correo.asunto
-                        td= correo.fecha
-                        td= correo.hora
-                        td(style="text-align: right;")
-                          button.btn.btn-primary1.btn-sm.btn-animations(data-bs-toggle="modal", data-bs-target="#correoModal"+correo.id) Ver correo
-                          a.btn.btn-primary1.btn-sm.btn-animations(href=`/correos/${correo.id}/favorito`, class='marcar-favorito') Marcar como favorito
-                          div.modal.fade(id="correoModal"+correo.id)
-                            .modal-dialog
-                              .modal-content
-                                .modal-header
-                                  h5.modal-title.custom-font Ver correo
-                                  button.btn-close(data-bs-dismiss="modal", aria-label="Close")
-                                .modal-body.text-left
-                                  p.custom-font1 Destinatario: #{correo.destinatario}
-                                  p.custom-font1 Asunto: #{correo.asunto}
-                                  p.custom-font1 Fecha: #{correo.fecha} Hora: #{correo.hora}
-                                  p.custom-font1 Contenido: #{correo.contenido}
-                                .modal-footer.d-flex.justify-content-center
-                                  div.text-center
-                                    button.btn.btn-primary1.btn-animations(onclick="window.location.href='/send';") Volver
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js")
+                        th(scope="col") Para
+                        th(scope="col") Asunto
+                        th(scope="col") Fecha
+                        th(scope="col") Hora
+                    tbody
+                      each correo in correos || []
+                        tr
+                          td= correo.destinatario
+                          td= correo.asunto
+                          td= correo.fecha
+                          td= correo.hora
+                          td(style="text-align: right;")
+                            button.btn.btn-primary1.btn-sm.btn-animations(data-bs-toggle="modal", data-bs-target="#correoModal"+correo.id) Ver correo
+                            a.btn.btn-primary1.btn-sm.btn-animations(href=`/correos/${correo.id}/favorito`, class='marcar-favorito') Marcar como favorito
+                            div.modal.fade(id="correoModal"+correo.id)
+                              .modal-dialog
+                                .modal-content
+                                  .modal-header
+                                    h5.modal-title.custom-font Ver correo
+                                    button.btn-close(data-bs-dismiss="modal", aria-label="Close")
+                                  .modal-body.text-left
+                                    p.custom-font1 Destinatario: #{correo.destinatario}
+                                    p.custom-font1 Asunto: #{correo.asunto}
+                                    p.custom-font1 Fecha: #{correo.fecha} Hora: #{correo.hora}
+                                    p.custom-font1 Contenido: #{correo.contenido}
+                                  .modal-footer.d-flex.justify-content-center
+                                    div.text-center
+                                      button.btn.btn-primary1.btn-animations(onclick="window.location.href='/send';") Volver
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js")
+

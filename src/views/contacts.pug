@@ -13,9 +13,9 @@ html(lang="en")
             button.btn-close(data-bs-dismiss="modal", id="CloseModal", aria-label="Close")
           div.modal-body
             form(id="composeForm", action="/enviar-correo", method="post")
-                div.mb-3
-                  label.form-label(for="recipient", id="desti-asun-men") Destinatario:
-                  input.form-control(type="text", id="recipient", name="destinatario", placeholder="Ingrese el destinatario", required)
+              div.mb-3
+                label.form-label(for="recipient", id="desti-asun-men") Destinatario:
+                input.form-control(type="text", id="recipient", name="destinatario", placeholder="Ingrese el destinatario", required)
               div.mb-3
                 label.form-label#desti-asun-men(for="subject") Asunto:
                 input.form-control(type="text", id="subject", name="asunto", placeholder="Ingrese el asunto", required)
